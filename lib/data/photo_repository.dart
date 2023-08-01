@@ -8,7 +8,7 @@ class PhotoRepository implements PhotoInterface {
     return Future.value(
       PhotoModel(
         id: 2,
-        url: 'https://via.placeholder.com/600/771796',
+        url: 'https://via.placeholder.com/600/9881f3',
         title: 'reprehenderit est deserunt velit ipsam',
         albumId: 1,
         thumbnailUrl: 'https://via.placeholder.com/150/771796',

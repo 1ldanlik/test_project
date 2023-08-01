@@ -19,6 +19,7 @@ mixin _$PhotoEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
+    required TResult Function() fetchPhotos,
     required TResult Function() addToFavorites,
     required TResult Function() removeFromFavorites,
   }) =>
@@ -26,6 +27,7 @@ mixin _$PhotoEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
+    TResult? Function()? fetchPhotos,
     TResult? Function()? addToFavorites,
     TResult? Function()? removeFromFavorites,
   }) =>
@@ -33,6 +35,7 @@ mixin _$PhotoEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
+    TResult Function()? fetchPhotos,
     TResult Function()? addToFavorites,
     TResult Function()? removeFromFavorites,
     required TResult orElse(),
@@ -41,6 +44,7 @@ mixin _$PhotoEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
+    required TResult Function(_FetchPhotos value) fetchPhotos,
     required TResult Function(_AddToFavorites value) addToFavorites,
     required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
   }) =>
@@ -48,6 +52,7 @@ mixin _$PhotoEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
+    TResult? Function(_FetchPhotos value)? fetchPhotos,
     TResult? Function(_AddToFavorites value)? addToFavorites,
     TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
   }) =>
@@ -55,6 +60,7 @@ mixin _$PhotoEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
+    TResult Function(_FetchPhotos value)? fetchPhotos,
     TResult Function(_AddToFavorites value)? addToFavorites,
     TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
@@ -119,6 +125,7 @@ class _$_GetPhotos implements _GetPhotos {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
+    required TResult Function() fetchPhotos,
     required TResult Function() addToFavorites,
     required TResult Function() removeFromFavorites,
   }) {
@@ -129,6 +136,7 @@ class _$_GetPhotos implements _GetPhotos {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
+    TResult? Function()? fetchPhotos,
     TResult? Function()? addToFavorites,
     TResult? Function()? removeFromFavorites,
   }) {
@@ -139,6 +147,7 @@ class _$_GetPhotos implements _GetPhotos {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
+    TResult Function()? fetchPhotos,
     TResult Function()? addToFavorites,
     TResult Function()? removeFromFavorites,
     required TResult orElse(),
@@ -153,6 +162,7 @@ class _$_GetPhotos implements _GetPhotos {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
+    required TResult Function(_FetchPhotos value) fetchPhotos,
     required TResult Function(_AddToFavorites value) addToFavorites,
     required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
   }) {
@@ -163,6 +173,7 @@ class _$_GetPhotos implements _GetPhotos {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
+    TResult? Function(_FetchPhotos value)? fetchPhotos,
     TResult? Function(_AddToFavorites value)? addToFavorites,
     TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
   }) {
@@ -173,6 +184,7 @@ class _$_GetPhotos implements _GetPhotos {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
+    TResult Function(_FetchPhotos value)? fetchPhotos,
     TResult Function(_AddToFavorites value)? addToFavorites,
     TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
@@ -186,6 +198,120 @@ class _$_GetPhotos implements _GetPhotos {
 
 abstract class _GetPhotos implements PhotoEvent {
   const factory _GetPhotos() = _$_GetPhotos;
+}
+
+/// @nodoc
+abstract class _$$_FetchPhotosCopyWith<$Res> {
+  factory _$$_FetchPhotosCopyWith(
+          _$_FetchPhotos value, $Res Function(_$_FetchPhotos) then) =
+      __$$_FetchPhotosCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_FetchPhotosCopyWithImpl<$Res>
+    extends _$PhotoEventCopyWithImpl<$Res, _$_FetchPhotos>
+    implements _$$_FetchPhotosCopyWith<$Res> {
+  __$$_FetchPhotosCopyWithImpl(
+      _$_FetchPhotos _value, $Res Function(_$_FetchPhotos) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_FetchPhotos implements _FetchPhotos {
+  const _$_FetchPhotos();
+
+  @override
+  String toString() {
+    return 'PhotoEvent.fetchPhotos()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FetchPhotos);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPhotos,
+    required TResult Function() fetchPhotos,
+    required TResult Function() addToFavorites,
+    required TResult Function() removeFromFavorites,
+  }) {
+    return fetchPhotos();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getPhotos,
+    TResult? Function()? fetchPhotos,
+    TResult? Function()? addToFavorites,
+    TResult? Function()? removeFromFavorites,
+  }) {
+    return fetchPhotos?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPhotos,
+    TResult Function()? fetchPhotos,
+    TResult Function()? addToFavorites,
+    TResult Function()? removeFromFavorites,
+    required TResult orElse(),
+  }) {
+    if (fetchPhotos != null) {
+      return fetchPhotos();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPhotos value) getPhotos,
+    required TResult Function(_FetchPhotos value) fetchPhotos,
+    required TResult Function(_AddToFavorites value) addToFavorites,
+    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+  }) {
+    return fetchPhotos(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPhotos value)? getPhotos,
+    TResult? Function(_FetchPhotos value)? fetchPhotos,
+    TResult? Function(_AddToFavorites value)? addToFavorites,
+    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+  }) {
+    return fetchPhotos?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPhotos value)? getPhotos,
+    TResult Function(_FetchPhotos value)? fetchPhotos,
+    TResult Function(_AddToFavorites value)? addToFavorites,
+    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    required TResult orElse(),
+  }) {
+    if (fetchPhotos != null) {
+      return fetchPhotos(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchPhotos implements PhotoEvent {
+  const factory _FetchPhotos() = _$_FetchPhotos;
 }
 
 /// @nodoc
@@ -227,6 +353,7 @@ class _$_AddToFavorites implements _AddToFavorites {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
+    required TResult Function() fetchPhotos,
     required TResult Function() addToFavorites,
     required TResult Function() removeFromFavorites,
   }) {
@@ -237,6 +364,7 @@ class _$_AddToFavorites implements _AddToFavorites {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
+    TResult? Function()? fetchPhotos,
     TResult? Function()? addToFavorites,
     TResult? Function()? removeFromFavorites,
   }) {
@@ -247,6 +375,7 @@ class _$_AddToFavorites implements _AddToFavorites {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
+    TResult Function()? fetchPhotos,
     TResult Function()? addToFavorites,
     TResult Function()? removeFromFavorites,
     required TResult orElse(),
@@ -261,6 +390,7 @@ class _$_AddToFavorites implements _AddToFavorites {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
+    required TResult Function(_FetchPhotos value) fetchPhotos,
     required TResult Function(_AddToFavorites value) addToFavorites,
     required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
   }) {
@@ -271,6 +401,7 @@ class _$_AddToFavorites implements _AddToFavorites {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
+    TResult? Function(_FetchPhotos value)? fetchPhotos,
     TResult? Function(_AddToFavorites value)? addToFavorites,
     TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
   }) {
@@ -281,6 +412,7 @@ class _$_AddToFavorites implements _AddToFavorites {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
+    TResult Function(_FetchPhotos value)? fetchPhotos,
     TResult Function(_AddToFavorites value)? addToFavorites,
     TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),
@@ -335,6 +467,7 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
+    required TResult Function() fetchPhotos,
     required TResult Function() addToFavorites,
     required TResult Function() removeFromFavorites,
   }) {
@@ -345,6 +478,7 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
+    TResult? Function()? fetchPhotos,
     TResult? Function()? addToFavorites,
     TResult? Function()? removeFromFavorites,
   }) {
@@ -355,6 +489,7 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
+    TResult Function()? fetchPhotos,
     TResult Function()? addToFavorites,
     TResult Function()? removeFromFavorites,
     required TResult orElse(),
@@ -369,6 +504,7 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
+    required TResult Function(_FetchPhotos value) fetchPhotos,
     required TResult Function(_AddToFavorites value) addToFavorites,
     required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
   }) {
@@ -379,6 +515,7 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
+    TResult? Function(_FetchPhotos value)? fetchPhotos,
     TResult? Function(_AddToFavorites value)? addToFavorites,
     TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
   }) {
@@ -389,6 +526,7 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
+    TResult Function(_FetchPhotos value)? fetchPhotos,
     TResult Function(_AddToFavorites value)? addToFavorites,
     TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
     required TResult orElse(),

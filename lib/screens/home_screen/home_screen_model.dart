@@ -16,14 +16,23 @@ class HomeScreenModel extends ElementaryModel {
 
   HomeScreenModel({required PhotoBloc photoBloc}) : _photoBloc = photoBloc {
     _photoSubscription = _photoBloc.stream.listen((state) {
-      state.map(base: (state) {
-        _elements.content(state.elements);
-      }, error: (state) {
-        _elements.error(state.exception, []);
-      }, loading: (state) {
-        _elements.loading([]);
-      });
+      state.map(
+        base: (state) {
+          _elements.content(state.elements);
+        },
+        error: (state) {
+          _elements.error(state.exception, []);
+        },
+        loading: (state) {
+          _elements.loading([]);
+        },
+      );
     });
+  }
+
+  Future<void> fetchPhotos() async {
+    await Future.delayed(const Duration(seconds: 5));
+    _photoBloc.add(const PhotoEvent.fetchPhotos());
   }
 
   void getPhotos() => _photoBloc.add(const PhotoEvent.getPhotos());

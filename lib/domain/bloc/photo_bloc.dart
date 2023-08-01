@@ -17,15 +17,31 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       : _photoRepository = photoRepository,
         super(const PhotoState.base(elements: [], favorites: [])) {
     on<_GetPhotos>(_onGetPhotos);
+    on<_FetchPhotos>(_onFetchPhotos);
     on<_AddToFavorites>(_onAddToFavorites);
     on<_RemoveFromFavorites>(_onRemoveFromFavorites);
 
     add(const PhotoEvent.getPhotos());
   }
 
+  Future<void> _onFetchPhotos(_, Emitter emit) async {
+    final list = state.elements.toList();
+    final length = list.toList().length;
+
+    for (int i = length; i < length + 10; i++) {
+      final photo = await _photoRepository.getPhoto();
+      list.add(photo);
+    }
+    emit(PhotoState.base(elements: list, favorites: []));
+  }
+
   Future<void> _onGetPhotos(_, Emitter emit) async {
-    final photo = await _photoRepository.getPhoto();
-    emit(PhotoState.base(elements: [photo], favorites: []));
+    final list = <PhotoModel>[];
+    for (int i = 0; i < 10; i++) {
+      final photo = await _photoRepository.getPhoto();
+      list.add(photo);
+    }
+    emit(PhotoState.base(elements: list, favorites: []));
   }
 
   void _onAddToFavorites(_AddToFavorites event, Emitter emit) {}

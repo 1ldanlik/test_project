@@ -1,8 +1,8 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
-import 'package:test_project/common/loading_indicator/loading_indicator.dart';
-import 'package:test_project/screens/home_screen/home_screen_wm.dart';
-import 'package:test_project/screens/home_screen/widgets/elements_tab.dart';
+import '../../common/loading_indicator/loading_indicator.dart';
+import 'home_screen_wm.dart';
+import 'widgets/photos_list_widget.dart';
 
 import '../../domain/photo_model/photo_model.dart';
 import 'widgets/photo_empty_widget.dart';
@@ -31,22 +31,27 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
             child: TabBarView(
               children: [
                 EntityStateNotifierBuilder<List<PhotoModel>>(
-                    listenableEntityState: wm.elements,
-                    builder: (_, elements) {
-                      if (elements == null) {
-                        return const PhotoEmptyWidget();
-                      }
+                  listenableEntityState: wm.elements,
+                  builder: (_, elements) {
+                    if (elements == null) {
+                      return const PhotoEmptyWidget();
+                    }
 
-                      return ElementsTab(
-                        elements: elements,
+                    return RefreshIndicator(
+                      onRefresh: () async {
+                        wm.onRefreshElementsTab();
+                      },
+                      child: PhotosListWidget(
+                        photos: elements,
+                        controller: wm.scrollController,
+                        withInfinityScroll: true,
                         onPhotoCardTap: wm.onPhotoCardTap,
-                        onRefreshElementsTab: wm.onRefreshElementsTab,
                         onFavoriteButtonPressed: wm.onFavoriteButtonPressed,
-                      );
-                    },
-                  loadingBuilder: (_,__) => const LoadingIndicator(),
+                      ),
+                    );
+                  },
+                  loadingBuilder: (_, __) => const LoadingIndicator(),
                   errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
-
                 ),
                 Container()
               ],
