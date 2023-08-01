@@ -19,13 +19,14 @@ class PhotoCard extends StatelessWidget {
   Widget build(BuildContext context) {
     const borderRadius = 26.0;
 
-    return InkWell(
+    return GestureDetector(
       onTap: onPhotoCardTap,
       child: Container(
-        width: 150,
+        height: 150,
         decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(Radius.circular(borderRadius)),
-            color: Theme.of(context).primaryColor),
+          borderRadius: const BorderRadius.all(Radius.circular(borderRadius)),
+          color: Theme.of(context).primaryColor,
+        ),
         child: Padding(
           padding: const EdgeInsets.all(Dimensions.small),
           child: LayoutBuilder(builder: (context, constraints) {

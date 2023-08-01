@@ -1,4 +1,18 @@
+import 'package:test_project/domain/photo_model/photo_model.dart';
 
-class PhotoRepository {
+import '../domain/photo_interface.dart';
 
+class PhotoRepository implements PhotoInterface {
+  @override
+  Future<PhotoModel> getPhoto() {
+    return Future.value(
+      PhotoModel(
+        id: 2,
+        url: 'https://via.placeholder.com/600/771796',
+        title: 'reprehenderit est deserunt velit ipsam',
+        albumId: 1,
+        thumbnailUrl: 'https://via.placeholder.com/150/771796',
+      ),
+    );
+  }
 }
