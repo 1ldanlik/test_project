@@ -25,6 +25,10 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
   }
 
   Future<void> _onFetchPhotos(_, Emitter emit) async {
+    emit(PhotoState.fetching(elements: state.elements, favorites: []));
+
+    await Future.delayed(const Duration(seconds: 5));
+
     final list = state.elements.toList();
     final length = list.toList().length;
 
@@ -32,15 +36,19 @@ class PhotoBloc extends Bloc<PhotoEvent, PhotoState> {
       final photo = await _photoRepository.getPhoto();
       list.add(photo);
     }
+
     emit(PhotoState.base(elements: list, favorites: []));
   }
 
   Future<void> _onGetPhotos(_, Emitter emit) async {
+    emit(const PhotoState.loading(elements: [], favorites: []));
+
     final list = <PhotoModel>[];
     for (int i = 0; i < 10; i++) {
       final photo = await _photoRepository.getPhoto();
       list.add(photo);
     }
+
     emit(PhotoState.base(elements: list, favorites: []));
   }
 

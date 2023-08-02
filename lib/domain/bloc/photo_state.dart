@@ -2,19 +2,26 @@ part of 'photo_bloc.dart';
 
 @freezed
 class PhotoState with _$PhotoState {
+  const PhotoState._();
+
   const factory PhotoState.base({
     required List<PhotoModel> elements,
     required List<PhotoModel> favorites,
-  }) = _BasePhotoState;
+  }) = BasePhotoState;
 
   const factory PhotoState.error({
     required List<PhotoModel> elements,
     required List<PhotoModel> favorites,
     required Exception exception,
-  }) = _ErrorPhotoState;
+  }) = ErrorPhotoState;
 
   const factory PhotoState.loading({
     required List<PhotoModel> elements,
     required List<PhotoModel> favorites,
-  }) = _LoadingPhotoState;
+  }) = LoadingPhotoState;
+
+  const factory PhotoState.fetching({
+    required List<PhotoModel> elements,
+    required List<PhotoModel> favorites,
+  }) = FetchingPhotoState;
 }

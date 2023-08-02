@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../domain/bloc/photo_bloc.dart';
 import '../../domain/photo_model/photo_model.dart';
@@ -8,11 +9,16 @@ import '../../domain/photo_model/photo_model.dart';
 class HomeScreenModel extends ElementaryModel {
   final PhotoBloc _photoBloc;
 
+  final _favorites = ValueNotifier<List<PhotoModel>>([]);
   final _elements = EntityStateNotifier<List<PhotoModel>>();
+
+  bool get isFetchingState => _photoBloc.state is FetchingPhotoState;
+
+  ValueListenable<List<PhotoModel>> get favorites => _favorites;
 
   ListenableState<EntityState<List<PhotoModel>>> get elements => _elements;
 
-  late StreamSubscription<PhotoState> _photoSubscription;
+  late final StreamSubscription<PhotoState> _photoSubscription;
 
   HomeScreenModel({required PhotoBloc photoBloc}) : _photoBloc = photoBloc {
     _photoSubscription = _photoBloc.stream.listen((state) {
@@ -26,14 +32,12 @@ class HomeScreenModel extends ElementaryModel {
         loading: (state) {
           _elements.loading([]);
         },
+        fetching: (_) {},
       );
     });
   }
 
-  Future<void> fetchPhotos() async {
-    await Future.delayed(const Duration(seconds: 5));
-    _photoBloc.add(const PhotoEvent.fetchPhotos());
-  }
+  void fetchPhotos() => _photoBloc.add(const PhotoEvent.fetchPhotos());
 
   void getPhotos() => _photoBloc.add(const PhotoEvent.getPhotos());
 

@@ -1,4 +1,5 @@
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/photo_repository.dart';
@@ -12,14 +13,16 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
 
   late final ScrollController scrollController;
 
+  ValueListenable<List<PhotoModel>> get favorites => model.favorites;
+
+  ListenableState<EntityState<List<PhotoModel>>> get elements => model.elements;
+
   @override
   void initWidgetModel() {
     super.initWidgetModel();
 
     scrollController = ScrollController()..addListener(_fetchPhotos);
   }
-
-  ListenableState<EntityState<List<PhotoModel>>> get elements => model.elements;
 
   void onPhotoCardTap() => model.getPhotos();
 
@@ -28,8 +31,10 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
   void onFavoriteButtonPressed(int photoId) => model.getPhotos();
 
   void _fetchPhotos() {
-    if (scrollController.position.maxScrollExtent == scrollController.offset) {
+    if (scrollController.position.maxScrollExtent == scrollController.offset &&
+        !model.isFetchingState) {
       model.fetchPhotos();
+      print('END:::');
     }
   }
 

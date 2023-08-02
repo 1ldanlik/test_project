@@ -557,6 +557,9 @@ mixin _$PhotoState {
     required TResult Function(
             List<PhotoModel> elements, List<PhotoModel> favorites)
         loading,
+    required TResult Function(
+            List<PhotoModel> elements, List<PhotoModel> favorites)
+        fetching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -568,6 +571,8 @@ mixin _$PhotoState {
         error,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -579,28 +584,33 @@ mixin _$PhotoState {
         error,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BasePhotoState value) base,
-    required TResult Function(_ErrorPhotoState value) error,
-    required TResult Function(_LoadingPhotoState value) loading,
+    required TResult Function(BasePhotoState value) base,
+    required TResult Function(ErrorPhotoState value) error,
+    required TResult Function(LoadingPhotoState value) loading,
+    required TResult Function(FetchingPhotoState value) fetching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BasePhotoState value)? base,
-    TResult? Function(_ErrorPhotoState value)? error,
-    TResult? Function(_LoadingPhotoState value)? loading,
+    TResult? Function(BasePhotoState value)? base,
+    TResult? Function(ErrorPhotoState value)? error,
+    TResult? Function(LoadingPhotoState value)? loading,
+    TResult? Function(FetchingPhotoState value)? fetching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BasePhotoState value)? base,
-    TResult Function(_ErrorPhotoState value)? error,
-    TResult Function(_LoadingPhotoState value)? loading,
+    TResult Function(BasePhotoState value)? base,
+    TResult Function(ErrorPhotoState value)? error,
+    TResult Function(LoadingPhotoState value)? loading,
+    TResult Function(FetchingPhotoState value)? fetching,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -649,22 +659,22 @@ class _$PhotoStateCopyWithImpl<$Res, $Val extends PhotoState>
 }
 
 /// @nodoc
-abstract class _$$_BasePhotoStateCopyWith<$Res>
+abstract class _$$BasePhotoStateCopyWith<$Res>
     implements $PhotoStateCopyWith<$Res> {
-  factory _$$_BasePhotoStateCopyWith(
-          _$_BasePhotoState value, $Res Function(_$_BasePhotoState) then) =
-      __$$_BasePhotoStateCopyWithImpl<$Res>;
+  factory _$$BasePhotoStateCopyWith(
+          _$BasePhotoState value, $Res Function(_$BasePhotoState) then) =
+      __$$BasePhotoStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<PhotoModel> elements, List<PhotoModel> favorites});
 }
 
 /// @nodoc
-class __$$_BasePhotoStateCopyWithImpl<$Res>
-    extends _$PhotoStateCopyWithImpl<$Res, _$_BasePhotoState>
-    implements _$$_BasePhotoStateCopyWith<$Res> {
-  __$$_BasePhotoStateCopyWithImpl(
-      _$_BasePhotoState _value, $Res Function(_$_BasePhotoState) _then)
+class __$$BasePhotoStateCopyWithImpl<$Res>
+    extends _$PhotoStateCopyWithImpl<$Res, _$BasePhotoState>
+    implements _$$BasePhotoStateCopyWith<$Res> {
+  __$$BasePhotoStateCopyWithImpl(
+      _$BasePhotoState _value, $Res Function(_$BasePhotoState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -673,7 +683,7 @@ class __$$_BasePhotoStateCopyWithImpl<$Res>
     Object? elements = null,
     Object? favorites = null,
   }) {
-    return _then(_$_BasePhotoState(
+    return _then(_$BasePhotoState(
       elements: null == elements
           ? _value._elements
           : elements // ignore: cast_nullable_to_non_nullable
@@ -688,12 +698,13 @@ class __$$_BasePhotoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_BasePhotoState implements _BasePhotoState {
-  const _$_BasePhotoState(
+class _$BasePhotoState extends BasePhotoState {
+  const _$BasePhotoState(
       {required final List<PhotoModel> elements,
       required final List<PhotoModel> favorites})
       : _elements = elements,
-        _favorites = favorites;
+        _favorites = favorites,
+        super._();
 
   final List<PhotoModel> _elements;
   @override
@@ -720,7 +731,7 @@ class _$_BasePhotoState implements _BasePhotoState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_BasePhotoState &&
+            other is _$BasePhotoState &&
             const DeepCollectionEquality().equals(other._elements, _elements) &&
             const DeepCollectionEquality()
                 .equals(other._favorites, _favorites));
@@ -735,8 +746,8 @@ class _$_BasePhotoState implements _BasePhotoState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_BasePhotoStateCopyWith<_$_BasePhotoState> get copyWith =>
-      __$$_BasePhotoStateCopyWithImpl<_$_BasePhotoState>(this, _$identity);
+  _$$BasePhotoStateCopyWith<_$BasePhotoState> get copyWith =>
+      __$$BasePhotoStateCopyWithImpl<_$BasePhotoState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -750,6 +761,9 @@ class _$_BasePhotoState implements _BasePhotoState {
     required TResult Function(
             List<PhotoModel> elements, List<PhotoModel> favorites)
         loading,
+    required TResult Function(
+            List<PhotoModel> elements, List<PhotoModel> favorites)
+        fetching,
   }) {
     return base(elements, favorites);
   }
@@ -764,6 +778,8 @@ class _$_BasePhotoState implements _BasePhotoState {
         error,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
   }) {
     return base?.call(elements, favorites);
   }
@@ -778,6 +794,8 @@ class _$_BasePhotoState implements _BasePhotoState {
         error,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
     required TResult orElse(),
   }) {
     if (base != null) {
@@ -789,9 +807,10 @@ class _$_BasePhotoState implements _BasePhotoState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BasePhotoState value) base,
-    required TResult Function(_ErrorPhotoState value) error,
-    required TResult Function(_LoadingPhotoState value) loading,
+    required TResult Function(BasePhotoState value) base,
+    required TResult Function(ErrorPhotoState value) error,
+    required TResult Function(LoadingPhotoState value) loading,
+    required TResult Function(FetchingPhotoState value) fetching,
   }) {
     return base(this);
   }
@@ -799,9 +818,10 @@ class _$_BasePhotoState implements _BasePhotoState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BasePhotoState value)? base,
-    TResult? Function(_ErrorPhotoState value)? error,
-    TResult? Function(_LoadingPhotoState value)? loading,
+    TResult? Function(BasePhotoState value)? base,
+    TResult? Function(ErrorPhotoState value)? error,
+    TResult? Function(LoadingPhotoState value)? loading,
+    TResult? Function(FetchingPhotoState value)? fetching,
   }) {
     return base?.call(this);
   }
@@ -809,9 +829,10 @@ class _$_BasePhotoState implements _BasePhotoState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BasePhotoState value)? base,
-    TResult Function(_ErrorPhotoState value)? error,
-    TResult Function(_LoadingPhotoState value)? loading,
+    TResult Function(BasePhotoState value)? base,
+    TResult Function(ErrorPhotoState value)? error,
+    TResult Function(LoadingPhotoState value)? loading,
+    TResult Function(FetchingPhotoState value)? fetching,
     required TResult orElse(),
   }) {
     if (base != null) {
@@ -821,10 +842,11 @@ class _$_BasePhotoState implements _BasePhotoState {
   }
 }
 
-abstract class _BasePhotoState implements PhotoState {
-  const factory _BasePhotoState(
+abstract class BasePhotoState extends PhotoState {
+  const factory BasePhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites}) = _$_BasePhotoState;
+      required final List<PhotoModel> favorites}) = _$BasePhotoState;
+  const BasePhotoState._() : super._();
 
   @override
   List<PhotoModel> get elements;
@@ -832,16 +854,16 @@ abstract class _BasePhotoState implements PhotoState {
   List<PhotoModel> get favorites;
   @override
   @JsonKey(ignore: true)
-  _$$_BasePhotoStateCopyWith<_$_BasePhotoState> get copyWith =>
+  _$$BasePhotoStateCopyWith<_$BasePhotoState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_ErrorPhotoStateCopyWith<$Res>
+abstract class _$$ErrorPhotoStateCopyWith<$Res>
     implements $PhotoStateCopyWith<$Res> {
-  factory _$$_ErrorPhotoStateCopyWith(
-          _$_ErrorPhotoState value, $Res Function(_$_ErrorPhotoState) then) =
-      __$$_ErrorPhotoStateCopyWithImpl<$Res>;
+  factory _$$ErrorPhotoStateCopyWith(
+          _$ErrorPhotoState value, $Res Function(_$ErrorPhotoState) then) =
+      __$$ErrorPhotoStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -851,11 +873,11 @@ abstract class _$$_ErrorPhotoStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_ErrorPhotoStateCopyWithImpl<$Res>
-    extends _$PhotoStateCopyWithImpl<$Res, _$_ErrorPhotoState>
-    implements _$$_ErrorPhotoStateCopyWith<$Res> {
-  __$$_ErrorPhotoStateCopyWithImpl(
-      _$_ErrorPhotoState _value, $Res Function(_$_ErrorPhotoState) _then)
+class __$$ErrorPhotoStateCopyWithImpl<$Res>
+    extends _$PhotoStateCopyWithImpl<$Res, _$ErrorPhotoState>
+    implements _$$ErrorPhotoStateCopyWith<$Res> {
+  __$$ErrorPhotoStateCopyWithImpl(
+      _$ErrorPhotoState _value, $Res Function(_$ErrorPhotoState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -865,7 +887,7 @@ class __$$_ErrorPhotoStateCopyWithImpl<$Res>
     Object? favorites = null,
     Object? exception = null,
   }) {
-    return _then(_$_ErrorPhotoState(
+    return _then(_$ErrorPhotoState(
       elements: null == elements
           ? _value._elements
           : elements // ignore: cast_nullable_to_non_nullable
@@ -884,13 +906,14 @@ class __$$_ErrorPhotoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_ErrorPhotoState implements _ErrorPhotoState {
-  const _$_ErrorPhotoState(
+class _$ErrorPhotoState extends ErrorPhotoState {
+  const _$ErrorPhotoState(
       {required final List<PhotoModel> elements,
       required final List<PhotoModel> favorites,
       required this.exception})
       : _elements = elements,
-        _favorites = favorites;
+        _favorites = favorites,
+        super._();
 
   final List<PhotoModel> _elements;
   @override
@@ -920,7 +943,7 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_ErrorPhotoState &&
+            other is _$ErrorPhotoState &&
             const DeepCollectionEquality().equals(other._elements, _elements) &&
             const DeepCollectionEquality()
                 .equals(other._favorites, _favorites) &&
@@ -938,8 +961,8 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ErrorPhotoStateCopyWith<_$_ErrorPhotoState> get copyWith =>
-      __$$_ErrorPhotoStateCopyWithImpl<_$_ErrorPhotoState>(this, _$identity);
+  _$$ErrorPhotoStateCopyWith<_$ErrorPhotoState> get copyWith =>
+      __$$ErrorPhotoStateCopyWithImpl<_$ErrorPhotoState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -953,6 +976,9 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
     required TResult Function(
             List<PhotoModel> elements, List<PhotoModel> favorites)
         loading,
+    required TResult Function(
+            List<PhotoModel> elements, List<PhotoModel> favorites)
+        fetching,
   }) {
     return error(elements, favorites, exception);
   }
@@ -967,6 +993,8 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
         error,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
   }) {
     return error?.call(elements, favorites, exception);
   }
@@ -981,6 +1009,8 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
         error,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -992,9 +1022,10 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BasePhotoState value) base,
-    required TResult Function(_ErrorPhotoState value) error,
-    required TResult Function(_LoadingPhotoState value) loading,
+    required TResult Function(BasePhotoState value) base,
+    required TResult Function(ErrorPhotoState value) error,
+    required TResult Function(LoadingPhotoState value) loading,
+    required TResult Function(FetchingPhotoState value) fetching,
   }) {
     return error(this);
   }
@@ -1002,9 +1033,10 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BasePhotoState value)? base,
-    TResult? Function(_ErrorPhotoState value)? error,
-    TResult? Function(_LoadingPhotoState value)? loading,
+    TResult? Function(BasePhotoState value)? base,
+    TResult? Function(ErrorPhotoState value)? error,
+    TResult? Function(LoadingPhotoState value)? loading,
+    TResult? Function(FetchingPhotoState value)? fetching,
   }) {
     return error?.call(this);
   }
@@ -1012,9 +1044,10 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BasePhotoState value)? base,
-    TResult Function(_ErrorPhotoState value)? error,
-    TResult Function(_LoadingPhotoState value)? loading,
+    TResult Function(BasePhotoState value)? base,
+    TResult Function(ErrorPhotoState value)? error,
+    TResult Function(LoadingPhotoState value)? loading,
+    TResult Function(FetchingPhotoState value)? fetching,
     required TResult orElse(),
   }) {
     if (error != null) {
@@ -1024,11 +1057,12 @@ class _$_ErrorPhotoState implements _ErrorPhotoState {
   }
 }
 
-abstract class _ErrorPhotoState implements PhotoState {
-  const factory _ErrorPhotoState(
+abstract class ErrorPhotoState extends PhotoState {
+  const factory ErrorPhotoState(
       {required final List<PhotoModel> elements,
       required final List<PhotoModel> favorites,
-      required final Exception exception}) = _$_ErrorPhotoState;
+      required final Exception exception}) = _$ErrorPhotoState;
+  const ErrorPhotoState._() : super._();
 
   @override
   List<PhotoModel> get elements;
@@ -1037,27 +1071,27 @@ abstract class _ErrorPhotoState implements PhotoState {
   Exception get exception;
   @override
   @JsonKey(ignore: true)
-  _$$_ErrorPhotoStateCopyWith<_$_ErrorPhotoState> get copyWith =>
+  _$$ErrorPhotoStateCopyWith<_$ErrorPhotoState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$_LoadingPhotoStateCopyWith<$Res>
+abstract class _$$LoadingPhotoStateCopyWith<$Res>
     implements $PhotoStateCopyWith<$Res> {
-  factory _$$_LoadingPhotoStateCopyWith(_$_LoadingPhotoState value,
-          $Res Function(_$_LoadingPhotoState) then) =
-      __$$_LoadingPhotoStateCopyWithImpl<$Res>;
+  factory _$$LoadingPhotoStateCopyWith(
+          _$LoadingPhotoState value, $Res Function(_$LoadingPhotoState) then) =
+      __$$LoadingPhotoStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<PhotoModel> elements, List<PhotoModel> favorites});
 }
 
 /// @nodoc
-class __$$_LoadingPhotoStateCopyWithImpl<$Res>
-    extends _$PhotoStateCopyWithImpl<$Res, _$_LoadingPhotoState>
-    implements _$$_LoadingPhotoStateCopyWith<$Res> {
-  __$$_LoadingPhotoStateCopyWithImpl(
-      _$_LoadingPhotoState _value, $Res Function(_$_LoadingPhotoState) _then)
+class __$$LoadingPhotoStateCopyWithImpl<$Res>
+    extends _$PhotoStateCopyWithImpl<$Res, _$LoadingPhotoState>
+    implements _$$LoadingPhotoStateCopyWith<$Res> {
+  __$$LoadingPhotoStateCopyWithImpl(
+      _$LoadingPhotoState _value, $Res Function(_$LoadingPhotoState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1066,7 +1100,7 @@ class __$$_LoadingPhotoStateCopyWithImpl<$Res>
     Object? elements = null,
     Object? favorites = null,
   }) {
-    return _then(_$_LoadingPhotoState(
+    return _then(_$LoadingPhotoState(
       elements: null == elements
           ? _value._elements
           : elements // ignore: cast_nullable_to_non_nullable
@@ -1081,12 +1115,13 @@ class __$$_LoadingPhotoStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoadingPhotoState implements _LoadingPhotoState {
-  const _$_LoadingPhotoState(
+class _$LoadingPhotoState extends LoadingPhotoState {
+  const _$LoadingPhotoState(
       {required final List<PhotoModel> elements,
       required final List<PhotoModel> favorites})
       : _elements = elements,
-        _favorites = favorites;
+        _favorites = favorites,
+        super._();
 
   final List<PhotoModel> _elements;
   @override
@@ -1113,7 +1148,7 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoadingPhotoState &&
+            other is _$LoadingPhotoState &&
             const DeepCollectionEquality().equals(other._elements, _elements) &&
             const DeepCollectionEquality()
                 .equals(other._favorites, _favorites));
@@ -1128,9 +1163,8 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoadingPhotoStateCopyWith<_$_LoadingPhotoState> get copyWith =>
-      __$$_LoadingPhotoStateCopyWithImpl<_$_LoadingPhotoState>(
-          this, _$identity);
+  _$$LoadingPhotoStateCopyWith<_$LoadingPhotoState> get copyWith =>
+      __$$LoadingPhotoStateCopyWithImpl<_$LoadingPhotoState>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1144,6 +1178,9 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
     required TResult Function(
             List<PhotoModel> elements, List<PhotoModel> favorites)
         loading,
+    required TResult Function(
+            List<PhotoModel> elements, List<PhotoModel> favorites)
+        fetching,
   }) {
     return loading(elements, favorites);
   }
@@ -1158,6 +1195,8 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
         error,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
   }) {
     return loading?.call(elements, favorites);
   }
@@ -1172,6 +1211,8 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
         error,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
         loading,
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1183,9 +1224,10 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_BasePhotoState value) base,
-    required TResult Function(_ErrorPhotoState value) error,
-    required TResult Function(_LoadingPhotoState value) loading,
+    required TResult Function(BasePhotoState value) base,
+    required TResult Function(ErrorPhotoState value) error,
+    required TResult Function(LoadingPhotoState value) loading,
+    required TResult Function(FetchingPhotoState value) fetching,
   }) {
     return loading(this);
   }
@@ -1193,9 +1235,10 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_BasePhotoState value)? base,
-    TResult? Function(_ErrorPhotoState value)? error,
-    TResult? Function(_LoadingPhotoState value)? loading,
+    TResult? Function(BasePhotoState value)? base,
+    TResult? Function(ErrorPhotoState value)? error,
+    TResult? Function(LoadingPhotoState value)? loading,
+    TResult? Function(FetchingPhotoState value)? fetching,
   }) {
     return loading?.call(this);
   }
@@ -1203,9 +1246,10 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_BasePhotoState value)? base,
-    TResult Function(_ErrorPhotoState value)? error,
-    TResult Function(_LoadingPhotoState value)? loading,
+    TResult Function(BasePhotoState value)? base,
+    TResult Function(ErrorPhotoState value)? error,
+    TResult Function(LoadingPhotoState value)? loading,
+    TResult Function(FetchingPhotoState value)? fetching,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -1215,10 +1259,11 @@ class _$_LoadingPhotoState implements _LoadingPhotoState {
   }
 }
 
-abstract class _LoadingPhotoState implements PhotoState {
-  const factory _LoadingPhotoState(
+abstract class LoadingPhotoState extends PhotoState {
+  const factory LoadingPhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites}) = _$_LoadingPhotoState;
+      required final List<PhotoModel> favorites}) = _$LoadingPhotoState;
+  const LoadingPhotoState._() : super._();
 
   @override
   List<PhotoModel> get elements;
@@ -1226,6 +1271,207 @@ abstract class _LoadingPhotoState implements PhotoState {
   List<PhotoModel> get favorites;
   @override
   @JsonKey(ignore: true)
-  _$$_LoadingPhotoStateCopyWith<_$_LoadingPhotoState> get copyWith =>
+  _$$LoadingPhotoStateCopyWith<_$LoadingPhotoState> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FetchingPhotoStateCopyWith<$Res>
+    implements $PhotoStateCopyWith<$Res> {
+  factory _$$FetchingPhotoStateCopyWith(_$FetchingPhotoState value,
+          $Res Function(_$FetchingPhotoState) then) =
+      __$$FetchingPhotoStateCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<PhotoModel> elements, List<PhotoModel> favorites});
+}
+
+/// @nodoc
+class __$$FetchingPhotoStateCopyWithImpl<$Res>
+    extends _$PhotoStateCopyWithImpl<$Res, _$FetchingPhotoState>
+    implements _$$FetchingPhotoStateCopyWith<$Res> {
+  __$$FetchingPhotoStateCopyWithImpl(
+      _$FetchingPhotoState _value, $Res Function(_$FetchingPhotoState) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? elements = null,
+    Object? favorites = null,
+  }) {
+    return _then(_$FetchingPhotoState(
+      elements: null == elements
+          ? _value._elements
+          : elements // ignore: cast_nullable_to_non_nullable
+              as List<PhotoModel>,
+      favorites: null == favorites
+          ? _value._favorites
+          : favorites // ignore: cast_nullable_to_non_nullable
+              as List<PhotoModel>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FetchingPhotoState extends FetchingPhotoState {
+  const _$FetchingPhotoState(
+      {required final List<PhotoModel> elements,
+      required final List<PhotoModel> favorites})
+      : _elements = elements,
+        _favorites = favorites,
+        super._();
+
+  final List<PhotoModel> _elements;
+  @override
+  List<PhotoModel> get elements {
+    if (_elements is EqualUnmodifiableListView) return _elements;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_elements);
+  }
+
+  final List<PhotoModel> _favorites;
+  @override
+  List<PhotoModel> get favorites {
+    if (_favorites is EqualUnmodifiableListView) return _favorites;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favorites);
+  }
+
+  @override
+  String toString() {
+    return 'PhotoState.fetching(elements: $elements, favorites: $favorites)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FetchingPhotoState &&
+            const DeepCollectionEquality().equals(other._elements, _elements) &&
+            const DeepCollectionEquality()
+                .equals(other._favorites, _favorites));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_elements),
+      const DeepCollectionEquality().hash(_favorites));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FetchingPhotoStateCopyWith<_$FetchingPhotoState> get copyWith =>
+      __$$FetchingPhotoStateCopyWithImpl<_$FetchingPhotoState>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            List<PhotoModel> elements, List<PhotoModel> favorites)
+        base,
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Exception exception)
+        error,
+    required TResult Function(
+            List<PhotoModel> elements, List<PhotoModel> favorites)
+        loading,
+    required TResult Function(
+            List<PhotoModel> elements, List<PhotoModel> favorites)
+        fetching,
+  }) {
+    return fetching(elements, favorites);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        base,
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Exception exception)?
+        error,
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        loading,
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
+  }) {
+    return fetching?.call(elements, favorites);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        base,
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Exception exception)?
+        error,
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        loading,
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+        fetching,
+    required TResult orElse(),
+  }) {
+    if (fetching != null) {
+      return fetching(elements, favorites);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(BasePhotoState value) base,
+    required TResult Function(ErrorPhotoState value) error,
+    required TResult Function(LoadingPhotoState value) loading,
+    required TResult Function(FetchingPhotoState value) fetching,
+  }) {
+    return fetching(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(BasePhotoState value)? base,
+    TResult? Function(ErrorPhotoState value)? error,
+    TResult? Function(LoadingPhotoState value)? loading,
+    TResult? Function(FetchingPhotoState value)? fetching,
+  }) {
+    return fetching?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(BasePhotoState value)? base,
+    TResult Function(ErrorPhotoState value)? error,
+    TResult Function(LoadingPhotoState value)? loading,
+    TResult Function(FetchingPhotoState value)? fetching,
+    required TResult orElse(),
+  }) {
+    if (fetching != null) {
+      return fetching(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class FetchingPhotoState extends PhotoState {
+  const factory FetchingPhotoState(
+      {required final List<PhotoModel> elements,
+      required final List<PhotoModel> favorites}) = _$FetchingPhotoState;
+  const FetchingPhotoState._() : super._();
+
+  @override
+  List<PhotoModel> get elements;
+  @override
+  List<PhotoModel> get favorites;
+  @override
+  @JsonKey(ignore: true)
+  _$$FetchingPhotoStateCopyWith<_$FetchingPhotoState> get copyWith =>
       throw _privateConstructorUsedError;
 }
