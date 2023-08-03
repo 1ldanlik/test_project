@@ -18,10 +18,9 @@ class PhotoHive {
 
   Future<void> removePhoto(int id) => box.delete(id);
 
-  Map<int, PhotoModel> getPhotos() {
-    final map =
-        box.toMap().map((key, value) => MapEntry<int, PhotoModel>(key, value));
-    return map;
+  List<PhotoModel> getPhotos() {
+    final list = box.values.toList();
+    return list;
   }
 
   Future<void> close() => box.close();

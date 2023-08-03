@@ -32,6 +32,7 @@ class PhotoCard extends StatelessWidget {
           child: LayoutBuilder(builder: (context, constraints) {
             final maxWidth = constraints.maxWidth;
             final imageWidth = maxWidth * 0.4;
+            final imageHeight = constraints.maxHeight;
 
             return Row(
               children: [
@@ -55,7 +56,10 @@ class PhotoCard extends StatelessWidget {
                     errorBuilder: (_, __, ___) => Image.asset(
                       'assets/default_image.jpg',
                       width: imageWidth,
+                      height: imageHeight,
+                      fit: BoxFit.cover,
                     ),
+                    fit: BoxFit.cover,
                   ),
                 ),
                 const SizedBox(

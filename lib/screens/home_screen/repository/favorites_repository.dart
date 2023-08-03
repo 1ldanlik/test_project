@@ -6,11 +6,11 @@ class FavoritesRepository {
 
   FavoritesRepository(this._photoHive);
 
-  Future<void> init() => _photoHive.init();
+  Future<void> initDb() => _photoHive.init();
 
-  Future<void> insertPhoto(PhotoModel photo) => _photoHive.setPhoto(photo);
+  Future<void> setPhoto(PhotoModel photo) => _photoHive.setPhoto(photo);
 
-  Map<int, PhotoModel> getPhotos() => _photoHive.getPhotos();
+  List<PhotoModel> getPhotos() => _photoHive.getPhotos();
 
   Future<void> removePhoto(PhotoModel photo) => _photoHive.removePhoto(photo.id);
 
