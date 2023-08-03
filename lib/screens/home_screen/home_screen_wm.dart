@@ -1,21 +1,23 @@
 import 'package:elementary/elementary.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/photo_repository.dart';
-import '../../domain/bloc/photo_bloc.dart';
+import '../../domain/bloc/photo_bloc/photo_bloc.dart';
 import '../../domain/photo_model/photo_model.dart';
+import '../../utils/photo_hive.dart';
 import 'home_screen.dart';
 import 'home_screen_model.dart';
+import 'repository/favorites_repository.dart';
 
 class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
   HomeScreenWM(super.model);
 
   late final ScrollController scrollController;
 
-  ValueListenable<List<PhotoModel>> get favorites => model.favorites;
-
   ListenableState<EntityState<List<PhotoModel>>> get elements => model.elements;
+
+  ListenableState<EntityState<List<PhotoModel>>> get favorites =>
+      model.favorites;
 
   @override
   void initWidgetModel() {
@@ -28,13 +30,17 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
 
   void onRefreshElementsTab() => model.getPhotos();
 
-  void onFavoriteButtonPressed(int photoId) => model.getPhotos();
+  void onFavoriteButtonPressed(PhotoModel photo) => photo.isFavorite
+      ? model.deletePhotoFromLocal(photo)
+      : model.savePhotoToLocal(photo);
+
+  void onDeletePhotoFromLocal(PhotoModel photo) =>
+      model.deletePhotoFromLocal(photo);
 
   void _fetchPhotos() {
     if (scrollController.position.maxScrollExtent == scrollController.offset &&
         !model.isFetchingState) {
       model.fetchPhotos();
-      print('END:::');
     }
   }
 
@@ -48,10 +54,16 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
 }
 
 HomeScreenWM createHomeScreenWM(_) {
+  final photoHive = PhotoHive();
+  final favoritesRepository = FavoritesRepository(photoHive);
   final photoRepository = PhotoRepository();
-  final photoBloc = PhotoBloc(photoRepository: photoRepository);
+  final photoBloc = PhotoBloc(
+      photoRepository: photoRepository,
+      favoritesRepository: favoritesRepository);
 
   return HomeScreenWM(
-    HomeScreenModel(photoBloc: photoBloc),
+    HomeScreenModel(
+      photoBloc: photoBloc,
+    ),
   );
 }

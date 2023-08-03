@@ -53,15 +53,21 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                   loadingBuilder: (_, __) => const LoadingIndicator(),
                   errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
                 ),
-                ValueListenableBuilder(
-                  valueListenable: wm.favorites,
-                  builder: (_, favorites, __) {
+                EntityStateNotifierBuilder(
+                  listenableEntityState: wm.favorites,
+                  builder: (_, favorites) {
+                    if (favorites == null) {
+                      return const PhotoEmptyWidget();
+                    }
+
                     return PhotosListWidget(
                       photos: favorites,
                       onPhotoCardTap: wm.onPhotoCardTap,
-                      onFavoriteButtonPressed: wm.onFavoriteButtonPressed,
+                      onFavoriteButtonPressed: wm.onDeletePhotoFromLocal,
                     );
                   },
+                  loadingBuilder: (_, __) => const LoadingIndicator(),
+                  errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
                 ),
               ],
             ),

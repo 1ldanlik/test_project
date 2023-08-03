@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:test_project/screens/home_screen/home_screen.dart';
 
-void main() {
+import 'domain/photo_model/photo_model.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if(!Hive.isAdapterRegistered(0)) {
+    Hive.registerAdapter(PhotoModelAdapter());
+  }
+  await Hive.initFlutter();
+
   runApp(const MyApp());
 }
 

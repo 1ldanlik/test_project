@@ -18,7 +18,7 @@ class PhotosListWidget extends StatelessWidget {
   final bool withInfinityScroll;
   final List<PhotoModel> photos;
   final VoidCallback onPhotoCardTap;
-  final void Function(int) onFavoriteButtonPressed;
+  final void Function(PhotoModel) onFavoriteButtonPressed;
   final ScrollController? controller;
 
   @override

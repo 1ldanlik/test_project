@@ -13,7 +13,7 @@ class PhotoCard extends StatelessWidget {
 
   final PhotoModel photo;
   final VoidCallback onPhotoCardTap;
-  final void Function(int) onFavoriteButtonPressed;
+  final void Function(PhotoModel) onFavoriteButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -63,10 +63,10 @@ class PhotoCard extends StatelessWidget {
                 ),
                 SizedBox(
                   width: maxWidth * 0.38,
-                  child: Text(photo.title),
+                  child: Text('${photo.id} ' + photo.title),
                 ),
                 IconButton(
-                  onPressed: () => onFavoriteButtonPressed(photo.id),
+                  onPressed: () => onFavoriteButtonPressed(photo),
                   icon: Icon(
                     photo.isFavorite ? Icons.star : Icons.star_border,
                   ),

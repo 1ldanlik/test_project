@@ -20,24 +20,27 @@ mixin _$PhotoEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
     required TResult Function() fetchPhotos,
-    required TResult Function() addToFavorites,
-    required TResult Function() removeFromFavorites,
+    required TResult Function() getPhotosFromLocal,
+    required TResult Function(PhotoModel photo) removePhotoFromLocal,
+    required TResult Function(PhotoModel photo) setPhotoToLocal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
     TResult? Function()? fetchPhotos,
-    TResult? Function()? addToFavorites,
-    TResult? Function()? removeFromFavorites,
+    TResult? Function()? getPhotosFromLocal,
+    TResult? Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult? Function(PhotoModel photo)? setPhotoToLocal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
     TResult Function()? fetchPhotos,
-    TResult Function()? addToFavorites,
-    TResult Function()? removeFromFavorites,
+    TResult Function()? getPhotosFromLocal,
+    TResult Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult Function(PhotoModel photo)? setPhotoToLocal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -45,24 +48,27 @@ mixin _$PhotoEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
     required TResult Function(_FetchPhotos value) fetchPhotos,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_GetPhotosFromLocal value) getPhotosFromLocal,
+    required TResult Function(_RemovePhotoFromLocal value) removePhotoFromLocal,
+    required TResult Function(_SetPhotoToLocal value) setPhotoToLocal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
     TResult? Function(_FetchPhotos value)? fetchPhotos,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult? Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult? Function(_SetPhotoToLocal value)? setPhotoToLocal,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
     TResult Function(_FetchPhotos value)? fetchPhotos,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult Function(_SetPhotoToLocal value)? setPhotoToLocal,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -126,8 +132,9 @@ class _$_GetPhotos implements _GetPhotos {
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
     required TResult Function() fetchPhotos,
-    required TResult Function() addToFavorites,
-    required TResult Function() removeFromFavorites,
+    required TResult Function() getPhotosFromLocal,
+    required TResult Function(PhotoModel photo) removePhotoFromLocal,
+    required TResult Function(PhotoModel photo) setPhotoToLocal,
   }) {
     return getPhotos();
   }
@@ -137,8 +144,9 @@ class _$_GetPhotos implements _GetPhotos {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
     TResult? Function()? fetchPhotos,
-    TResult? Function()? addToFavorites,
-    TResult? Function()? removeFromFavorites,
+    TResult? Function()? getPhotosFromLocal,
+    TResult? Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult? Function(PhotoModel photo)? setPhotoToLocal,
   }) {
     return getPhotos?.call();
   }
@@ -148,8 +156,9 @@ class _$_GetPhotos implements _GetPhotos {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
     TResult Function()? fetchPhotos,
-    TResult Function()? addToFavorites,
-    TResult Function()? removeFromFavorites,
+    TResult Function()? getPhotosFromLocal,
+    TResult Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult Function(PhotoModel photo)? setPhotoToLocal,
     required TResult orElse(),
   }) {
     if (getPhotos != null) {
@@ -163,8 +172,9 @@ class _$_GetPhotos implements _GetPhotos {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
     required TResult Function(_FetchPhotos value) fetchPhotos,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_GetPhotosFromLocal value) getPhotosFromLocal,
+    required TResult Function(_RemovePhotoFromLocal value) removePhotoFromLocal,
+    required TResult Function(_SetPhotoToLocal value) setPhotoToLocal,
   }) {
     return getPhotos(this);
   }
@@ -174,8 +184,9 @@ class _$_GetPhotos implements _GetPhotos {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
     TResult? Function(_FetchPhotos value)? fetchPhotos,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult? Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult? Function(_SetPhotoToLocal value)? setPhotoToLocal,
   }) {
     return getPhotos?.call(this);
   }
@@ -185,8 +196,9 @@ class _$_GetPhotos implements _GetPhotos {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
     TResult Function(_FetchPhotos value)? fetchPhotos,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult Function(_SetPhotoToLocal value)? setPhotoToLocal,
     required TResult orElse(),
   }) {
     if (getPhotos != null) {
@@ -240,8 +252,9 @@ class _$_FetchPhotos implements _FetchPhotos {
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
     required TResult Function() fetchPhotos,
-    required TResult Function() addToFavorites,
-    required TResult Function() removeFromFavorites,
+    required TResult Function() getPhotosFromLocal,
+    required TResult Function(PhotoModel photo) removePhotoFromLocal,
+    required TResult Function(PhotoModel photo) setPhotoToLocal,
   }) {
     return fetchPhotos();
   }
@@ -251,8 +264,9 @@ class _$_FetchPhotos implements _FetchPhotos {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
     TResult? Function()? fetchPhotos,
-    TResult? Function()? addToFavorites,
-    TResult? Function()? removeFromFavorites,
+    TResult? Function()? getPhotosFromLocal,
+    TResult? Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult? Function(PhotoModel photo)? setPhotoToLocal,
   }) {
     return fetchPhotos?.call();
   }
@@ -262,8 +276,9 @@ class _$_FetchPhotos implements _FetchPhotos {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
     TResult Function()? fetchPhotos,
-    TResult Function()? addToFavorites,
-    TResult Function()? removeFromFavorites,
+    TResult Function()? getPhotosFromLocal,
+    TResult Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult Function(PhotoModel photo)? setPhotoToLocal,
     required TResult orElse(),
   }) {
     if (fetchPhotos != null) {
@@ -277,8 +292,9 @@ class _$_FetchPhotos implements _FetchPhotos {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
     required TResult Function(_FetchPhotos value) fetchPhotos,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_GetPhotosFromLocal value) getPhotosFromLocal,
+    required TResult Function(_RemovePhotoFromLocal value) removePhotoFromLocal,
+    required TResult Function(_SetPhotoToLocal value) setPhotoToLocal,
   }) {
     return fetchPhotos(this);
   }
@@ -288,8 +304,9 @@ class _$_FetchPhotos implements _FetchPhotos {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
     TResult? Function(_FetchPhotos value)? fetchPhotos,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult? Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult? Function(_SetPhotoToLocal value)? setPhotoToLocal,
   }) {
     return fetchPhotos?.call(this);
   }
@@ -299,8 +316,9 @@ class _$_FetchPhotos implements _FetchPhotos {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
     TResult Function(_FetchPhotos value)? fetchPhotos,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult Function(_SetPhotoToLocal value)? setPhotoToLocal,
     required TResult orElse(),
   }) {
     if (fetchPhotos != null) {
@@ -315,35 +333,35 @@ abstract class _FetchPhotos implements PhotoEvent {
 }
 
 /// @nodoc
-abstract class _$$_AddToFavoritesCopyWith<$Res> {
-  factory _$$_AddToFavoritesCopyWith(
-          _$_AddToFavorites value, $Res Function(_$_AddToFavorites) then) =
-      __$$_AddToFavoritesCopyWithImpl<$Res>;
+abstract class _$$_GetPhotosFromLocalCopyWith<$Res> {
+  factory _$$_GetPhotosFromLocalCopyWith(_$_GetPhotosFromLocal value,
+          $Res Function(_$_GetPhotosFromLocal) then) =
+      __$$_GetPhotosFromLocalCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_AddToFavoritesCopyWithImpl<$Res>
-    extends _$PhotoEventCopyWithImpl<$Res, _$_AddToFavorites>
-    implements _$$_AddToFavoritesCopyWith<$Res> {
-  __$$_AddToFavoritesCopyWithImpl(
-      _$_AddToFavorites _value, $Res Function(_$_AddToFavorites) _then)
+class __$$_GetPhotosFromLocalCopyWithImpl<$Res>
+    extends _$PhotoEventCopyWithImpl<$Res, _$_GetPhotosFromLocal>
+    implements _$$_GetPhotosFromLocalCopyWith<$Res> {
+  __$$_GetPhotosFromLocalCopyWithImpl(
+      _$_GetPhotosFromLocal _value, $Res Function(_$_GetPhotosFromLocal) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_AddToFavorites implements _AddToFavorites {
-  const _$_AddToFavorites();
+class _$_GetPhotosFromLocal implements _GetPhotosFromLocal {
+  const _$_GetPhotosFromLocal();
 
   @override
   String toString() {
-    return 'PhotoEvent.addToFavorites()';
+    return 'PhotoEvent.getPhotosFromLocal()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_AddToFavorites);
+        (other.runtimeType == runtimeType && other is _$_GetPhotosFromLocal);
   }
 
   @override
@@ -354,10 +372,11 @@ class _$_AddToFavorites implements _AddToFavorites {
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
     required TResult Function() fetchPhotos,
-    required TResult Function() addToFavorites,
-    required TResult Function() removeFromFavorites,
+    required TResult Function() getPhotosFromLocal,
+    required TResult Function(PhotoModel photo) removePhotoFromLocal,
+    required TResult Function(PhotoModel photo) setPhotoToLocal,
   }) {
-    return addToFavorites();
+    return getPhotosFromLocal();
   }
 
   @override
@@ -365,10 +384,11 @@ class _$_AddToFavorites implements _AddToFavorites {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
     TResult? Function()? fetchPhotos,
-    TResult? Function()? addToFavorites,
-    TResult? Function()? removeFromFavorites,
+    TResult? Function()? getPhotosFromLocal,
+    TResult? Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult? Function(PhotoModel photo)? setPhotoToLocal,
   }) {
-    return addToFavorites?.call();
+    return getPhotosFromLocal?.call();
   }
 
   @override
@@ -376,12 +396,13 @@ class _$_AddToFavorites implements _AddToFavorites {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
     TResult Function()? fetchPhotos,
-    TResult Function()? addToFavorites,
-    TResult Function()? removeFromFavorites,
+    TResult Function()? getPhotosFromLocal,
+    TResult Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult Function(PhotoModel photo)? setPhotoToLocal,
     required TResult orElse(),
   }) {
-    if (addToFavorites != null) {
-      return addToFavorites();
+    if (getPhotosFromLocal != null) {
+      return getPhotosFromLocal();
     }
     return orElse();
   }
@@ -391,10 +412,11 @@ class _$_AddToFavorites implements _AddToFavorites {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
     required TResult Function(_FetchPhotos value) fetchPhotos,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_GetPhotosFromLocal value) getPhotosFromLocal,
+    required TResult Function(_RemovePhotoFromLocal value) removePhotoFromLocal,
+    required TResult Function(_SetPhotoToLocal value) setPhotoToLocal,
   }) {
-    return addToFavorites(this);
+    return getPhotosFromLocal(this);
   }
 
   @override
@@ -402,10 +424,11 @@ class _$_AddToFavorites implements _AddToFavorites {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
     TResult? Function(_FetchPhotos value)? fetchPhotos,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult? Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult? Function(_SetPhotoToLocal value)? setPhotoToLocal,
   }) {
-    return addToFavorites?.call(this);
+    return getPhotosFromLocal?.call(this);
   }
 
   @override
@@ -413,65 +436,94 @@ class _$_AddToFavorites implements _AddToFavorites {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
     TResult Function(_FetchPhotos value)? fetchPhotos,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult Function(_SetPhotoToLocal value)? setPhotoToLocal,
     required TResult orElse(),
   }) {
-    if (addToFavorites != null) {
-      return addToFavorites(this);
+    if (getPhotosFromLocal != null) {
+      return getPhotosFromLocal(this);
     }
     return orElse();
   }
 }
 
-abstract class _AddToFavorites implements PhotoEvent {
-  const factory _AddToFavorites() = _$_AddToFavorites;
+abstract class _GetPhotosFromLocal implements PhotoEvent {
+  const factory _GetPhotosFromLocal() = _$_GetPhotosFromLocal;
 }
 
 /// @nodoc
-abstract class _$$_RemoveFromFavoritesCopyWith<$Res> {
-  factory _$$_RemoveFromFavoritesCopyWith(_$_RemoveFromFavorites value,
-          $Res Function(_$_RemoveFromFavorites) then) =
-      __$$_RemoveFromFavoritesCopyWithImpl<$Res>;
+abstract class _$$_RemovePhotoFromLocalCopyWith<$Res> {
+  factory _$$_RemovePhotoFromLocalCopyWith(_$_RemovePhotoFromLocal value,
+          $Res Function(_$_RemovePhotoFromLocal) then) =
+      __$$_RemovePhotoFromLocalCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PhotoModel photo});
 }
 
 /// @nodoc
-class __$$_RemoveFromFavoritesCopyWithImpl<$Res>
-    extends _$PhotoEventCopyWithImpl<$Res, _$_RemoveFromFavorites>
-    implements _$$_RemoveFromFavoritesCopyWith<$Res> {
-  __$$_RemoveFromFavoritesCopyWithImpl(_$_RemoveFromFavorites _value,
-      $Res Function(_$_RemoveFromFavorites) _then)
+class __$$_RemovePhotoFromLocalCopyWithImpl<$Res>
+    extends _$PhotoEventCopyWithImpl<$Res, _$_RemovePhotoFromLocal>
+    implements _$$_RemovePhotoFromLocalCopyWith<$Res> {
+  __$$_RemovePhotoFromLocalCopyWithImpl(_$_RemovePhotoFromLocal _value,
+      $Res Function(_$_RemovePhotoFromLocal) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photo = null,
+  }) {
+    return _then(_$_RemovePhotoFromLocal(
+      photo: null == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as PhotoModel,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$_RemoveFromFavorites implements _RemoveFromFavorites {
-  const _$_RemoveFromFavorites();
+class _$_RemovePhotoFromLocal implements _RemovePhotoFromLocal {
+  const _$_RemovePhotoFromLocal({required this.photo});
+
+  @override
+  final PhotoModel photo;
 
   @override
   String toString() {
-    return 'PhotoEvent.removeFromFavorites()';
+    return 'PhotoEvent.removePhotoFromLocal(photo: $photo)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_RemoveFromFavorites);
+        (other.runtimeType == runtimeType &&
+            other is _$_RemovePhotoFromLocal &&
+            (identical(other.photo, photo) || other.photo == photo));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, photo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RemovePhotoFromLocalCopyWith<_$_RemovePhotoFromLocal> get copyWith =>
+      __$$_RemovePhotoFromLocalCopyWithImpl<_$_RemovePhotoFromLocal>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() getPhotos,
     required TResult Function() fetchPhotos,
-    required TResult Function() addToFavorites,
-    required TResult Function() removeFromFavorites,
+    required TResult Function() getPhotosFromLocal,
+    required TResult Function(PhotoModel photo) removePhotoFromLocal,
+    required TResult Function(PhotoModel photo) setPhotoToLocal,
   }) {
-    return removeFromFavorites();
+    return removePhotoFromLocal(photo);
   }
 
   @override
@@ -479,10 +531,11 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? getPhotos,
     TResult? Function()? fetchPhotos,
-    TResult? Function()? addToFavorites,
-    TResult? Function()? removeFromFavorites,
+    TResult? Function()? getPhotosFromLocal,
+    TResult? Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult? Function(PhotoModel photo)? setPhotoToLocal,
   }) {
-    return removeFromFavorites?.call();
+    return removePhotoFromLocal?.call(photo);
   }
 
   @override
@@ -490,12 +543,13 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? getPhotos,
     TResult Function()? fetchPhotos,
-    TResult Function()? addToFavorites,
-    TResult Function()? removeFromFavorites,
+    TResult Function()? getPhotosFromLocal,
+    TResult Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult Function(PhotoModel photo)? setPhotoToLocal,
     required TResult orElse(),
   }) {
-    if (removeFromFavorites != null) {
-      return removeFromFavorites();
+    if (removePhotoFromLocal != null) {
+      return removePhotoFromLocal(photo);
     }
     return orElse();
   }
@@ -505,10 +559,11 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   TResult map<TResult extends Object?>({
     required TResult Function(_GetPhotos value) getPhotos,
     required TResult Function(_FetchPhotos value) fetchPhotos,
-    required TResult Function(_AddToFavorites value) addToFavorites,
-    required TResult Function(_RemoveFromFavorites value) removeFromFavorites,
+    required TResult Function(_GetPhotosFromLocal value) getPhotosFromLocal,
+    required TResult Function(_RemovePhotoFromLocal value) removePhotoFromLocal,
+    required TResult Function(_SetPhotoToLocal value) setPhotoToLocal,
   }) {
-    return removeFromFavorites(this);
+    return removePhotoFromLocal(this);
   }
 
   @override
@@ -516,10 +571,11 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_GetPhotos value)? getPhotos,
     TResult? Function(_FetchPhotos value)? fetchPhotos,
-    TResult? Function(_AddToFavorites value)? addToFavorites,
-    TResult? Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult? Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult? Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult? Function(_SetPhotoToLocal value)? setPhotoToLocal,
   }) {
-    return removeFromFavorites?.call(this);
+    return removePhotoFromLocal?.call(this);
   }
 
   @override
@@ -527,64 +583,233 @@ class _$_RemoveFromFavorites implements _RemoveFromFavorites {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_GetPhotos value)? getPhotos,
     TResult Function(_FetchPhotos value)? fetchPhotos,
-    TResult Function(_AddToFavorites value)? addToFavorites,
-    TResult Function(_RemoveFromFavorites value)? removeFromFavorites,
+    TResult Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult Function(_SetPhotoToLocal value)? setPhotoToLocal,
     required TResult orElse(),
   }) {
-    if (removeFromFavorites != null) {
-      return removeFromFavorites(this);
+    if (removePhotoFromLocal != null) {
+      return removePhotoFromLocal(this);
     }
     return orElse();
   }
 }
 
-abstract class _RemoveFromFavorites implements PhotoEvent {
-  const factory _RemoveFromFavorites() = _$_RemoveFromFavorites;
+abstract class _RemovePhotoFromLocal implements PhotoEvent {
+  const factory _RemovePhotoFromLocal({required final PhotoModel photo}) =
+      _$_RemovePhotoFromLocal;
+
+  PhotoModel get photo;
+  @JsonKey(ignore: true)
+  _$$_RemovePhotoFromLocalCopyWith<_$_RemovePhotoFromLocal> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SetPhotoToLocalCopyWith<$Res> {
+  factory _$$_SetPhotoToLocalCopyWith(
+          _$_SetPhotoToLocal value, $Res Function(_$_SetPhotoToLocal) then) =
+      __$$_SetPhotoToLocalCopyWithImpl<$Res>;
+  @useResult
+  $Res call({PhotoModel photo});
+}
+
+/// @nodoc
+class __$$_SetPhotoToLocalCopyWithImpl<$Res>
+    extends _$PhotoEventCopyWithImpl<$Res, _$_SetPhotoToLocal>
+    implements _$$_SetPhotoToLocalCopyWith<$Res> {
+  __$$_SetPhotoToLocalCopyWithImpl(
+      _$_SetPhotoToLocal _value, $Res Function(_$_SetPhotoToLocal) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? photo = null,
+  }) {
+    return _then(_$_SetPhotoToLocal(
+      photo: null == photo
+          ? _value.photo
+          : photo // ignore: cast_nullable_to_non_nullable
+              as PhotoModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_SetPhotoToLocal implements _SetPhotoToLocal {
+  const _$_SetPhotoToLocal({required this.photo});
+
+  @override
+  final PhotoModel photo;
+
+  @override
+  String toString() {
+    return 'PhotoEvent.setPhotoToLocal(photo: $photo)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_SetPhotoToLocal &&
+            (identical(other.photo, photo) || other.photo == photo));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, photo);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_SetPhotoToLocalCopyWith<_$_SetPhotoToLocal> get copyWith =>
+      __$$_SetPhotoToLocalCopyWithImpl<_$_SetPhotoToLocal>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getPhotos,
+    required TResult Function() fetchPhotos,
+    required TResult Function() getPhotosFromLocal,
+    required TResult Function(PhotoModel photo) removePhotoFromLocal,
+    required TResult Function(PhotoModel photo) setPhotoToLocal,
+  }) {
+    return setPhotoToLocal(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getPhotos,
+    TResult? Function()? fetchPhotos,
+    TResult? Function()? getPhotosFromLocal,
+    TResult? Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult? Function(PhotoModel photo)? setPhotoToLocal,
+  }) {
+    return setPhotoToLocal?.call(photo);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getPhotos,
+    TResult Function()? fetchPhotos,
+    TResult Function()? getPhotosFromLocal,
+    TResult Function(PhotoModel photo)? removePhotoFromLocal,
+    TResult Function(PhotoModel photo)? setPhotoToLocal,
+    required TResult orElse(),
+  }) {
+    if (setPhotoToLocal != null) {
+      return setPhotoToLocal(photo);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_GetPhotos value) getPhotos,
+    required TResult Function(_FetchPhotos value) fetchPhotos,
+    required TResult Function(_GetPhotosFromLocal value) getPhotosFromLocal,
+    required TResult Function(_RemovePhotoFromLocal value) removePhotoFromLocal,
+    required TResult Function(_SetPhotoToLocal value) setPhotoToLocal,
+  }) {
+    return setPhotoToLocal(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_GetPhotos value)? getPhotos,
+    TResult? Function(_FetchPhotos value)? fetchPhotos,
+    TResult? Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult? Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult? Function(_SetPhotoToLocal value)? setPhotoToLocal,
+  }) {
+    return setPhotoToLocal?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_GetPhotos value)? getPhotos,
+    TResult Function(_FetchPhotos value)? fetchPhotos,
+    TResult Function(_GetPhotosFromLocal value)? getPhotosFromLocal,
+    TResult Function(_RemovePhotoFromLocal value)? removePhotoFromLocal,
+    TResult Function(_SetPhotoToLocal value)? setPhotoToLocal,
+    required TResult orElse(),
+  }) {
+    if (setPhotoToLocal != null) {
+      return setPhotoToLocal(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SetPhotoToLocal implements PhotoEvent {
+  const factory _SetPhotoToLocal({required final PhotoModel photo}) =
+      _$_SetPhotoToLocal;
+
+  PhotoModel get photo;
+  @JsonKey(ignore: true)
+  _$$_SetPhotoToLocalCopyWith<_$_SetPhotoToLocal> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 mixin _$PhotoState {
   List<PhotoModel> get elements => throw _privateConstructorUsedError;
   List<PhotoModel> get favorites => throw _privateConstructorUsedError;
+  Map<int, PhotoModel> get favoritesMap => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
-        base,
     required TResult Function(List<PhotoModel> elements,
-            List<PhotoModel> favorites, Exception exception)
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
+        base,
+    required TResult Function(
+            List<PhotoModel> elements,
+            List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap,
+            Exception exception)
         error,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         loading,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         fetching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
     required TResult orElse(),
   }) =>
@@ -626,7 +851,10 @@ abstract class $PhotoStateCopyWith<$Res> {
           PhotoState value, $Res Function(PhotoState) then) =
       _$PhotoStateCopyWithImpl<$Res, PhotoState>;
   @useResult
-  $Res call({List<PhotoModel> elements, List<PhotoModel> favorites});
+  $Res call(
+      {List<PhotoModel> elements,
+      List<PhotoModel> favorites,
+      Map<int, PhotoModel> favoritesMap});
 }
 
 /// @nodoc
@@ -644,6 +872,7 @@ class _$PhotoStateCopyWithImpl<$Res, $Val extends PhotoState>
   $Res call({
     Object? elements = null,
     Object? favorites = null,
+    Object? favoritesMap = null,
   }) {
     return _then(_value.copyWith(
       elements: null == elements
@@ -654,6 +883,10 @@ class _$PhotoStateCopyWithImpl<$Res, $Val extends PhotoState>
           ? _value.favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<PhotoModel>,
+      favoritesMap: null == favoritesMap
+          ? _value.favoritesMap
+          : favoritesMap // ignore: cast_nullable_to_non_nullable
+              as Map<int, PhotoModel>,
     ) as $Val);
   }
 }
@@ -666,7 +899,10 @@ abstract class _$$BasePhotoStateCopyWith<$Res>
       __$$BasePhotoStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PhotoModel> elements, List<PhotoModel> favorites});
+  $Res call(
+      {List<PhotoModel> elements,
+      List<PhotoModel> favorites,
+      Map<int, PhotoModel> favoritesMap});
 }
 
 /// @nodoc
@@ -682,6 +918,7 @@ class __$$BasePhotoStateCopyWithImpl<$Res>
   $Res call({
     Object? elements = null,
     Object? favorites = null,
+    Object? favoritesMap = null,
   }) {
     return _then(_$BasePhotoState(
       elements: null == elements
@@ -692,6 +929,10 @@ class __$$BasePhotoStateCopyWithImpl<$Res>
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<PhotoModel>,
+      favoritesMap: null == favoritesMap
+          ? _value._favoritesMap
+          : favoritesMap // ignore: cast_nullable_to_non_nullable
+              as Map<int, PhotoModel>,
     ));
   }
 }
@@ -701,9 +942,11 @@ class __$$BasePhotoStateCopyWithImpl<$Res>
 class _$BasePhotoState extends BasePhotoState {
   const _$BasePhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites})
+      required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap})
       : _elements = elements,
         _favorites = favorites,
+        _favoritesMap = favoritesMap,
         super._();
 
   final List<PhotoModel> _elements;
@@ -722,9 +965,17 @@ class _$BasePhotoState extends BasePhotoState {
     return EqualUnmodifiableListView(_favorites);
   }
 
+  final Map<int, PhotoModel> _favoritesMap;
+  @override
+  Map<int, PhotoModel> get favoritesMap {
+    if (_favoritesMap is EqualUnmodifiableMapView) return _favoritesMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_favoritesMap);
+  }
+
   @override
   String toString() {
-    return 'PhotoState.base(elements: $elements, favorites: $favorites)';
+    return 'PhotoState.base(elements: $elements, favorites: $favorites, favoritesMap: $favoritesMap)';
   }
 
   @override
@@ -734,14 +985,17 @@ class _$BasePhotoState extends BasePhotoState {
             other is _$BasePhotoState &&
             const DeepCollectionEquality().equals(other._elements, _elements) &&
             const DeepCollectionEquality()
-                .equals(other._favorites, _favorites));
+                .equals(other._favorites, _favorites) &&
+            const DeepCollectionEquality()
+                .equals(other._favoritesMap, _favoritesMap));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_elements),
-      const DeepCollectionEquality().hash(_favorites));
+      const DeepCollectionEquality().hash(_favorites),
+      const DeepCollectionEquality().hash(_favoritesMap));
 
   @JsonKey(ignore: true)
   @override
@@ -752,54 +1006,63 @@ class _$BasePhotoState extends BasePhotoState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
-        base,
     required TResult Function(List<PhotoModel> elements,
-            List<PhotoModel> favorites, Exception exception)
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
+        base,
+    required TResult Function(
+            List<PhotoModel> elements,
+            List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap,
+            Exception exception)
         error,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         loading,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         fetching,
   }) {
-    return base(elements, favorites);
+    return base(elements, favorites, favoritesMap);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
   }) {
-    return base?.call(elements, favorites);
+    return base?.call(elements, favorites, favoritesMap);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
     required TResult orElse(),
   }) {
     if (base != null) {
-      return base(elements, favorites);
+      return base(elements, favorites, favoritesMap);
     }
     return orElse();
   }
@@ -845,13 +1108,16 @@ class _$BasePhotoState extends BasePhotoState {
 abstract class BasePhotoState extends PhotoState {
   const factory BasePhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites}) = _$BasePhotoState;
+      required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap}) = _$BasePhotoState;
   const BasePhotoState._() : super._();
 
   @override
   List<PhotoModel> get elements;
   @override
   List<PhotoModel> get favorites;
+  @override
+  Map<int, PhotoModel> get favoritesMap;
   @override
   @JsonKey(ignore: true)
   _$$BasePhotoStateCopyWith<_$BasePhotoState> get copyWith =>
@@ -869,6 +1135,7 @@ abstract class _$$ErrorPhotoStateCopyWith<$Res>
   $Res call(
       {List<PhotoModel> elements,
       List<PhotoModel> favorites,
+      Map<int, PhotoModel> favoritesMap,
       Exception exception});
 }
 
@@ -885,6 +1152,7 @@ class __$$ErrorPhotoStateCopyWithImpl<$Res>
   $Res call({
     Object? elements = null,
     Object? favorites = null,
+    Object? favoritesMap = null,
     Object? exception = null,
   }) {
     return _then(_$ErrorPhotoState(
@@ -896,6 +1164,10 @@ class __$$ErrorPhotoStateCopyWithImpl<$Res>
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<PhotoModel>,
+      favoritesMap: null == favoritesMap
+          ? _value._favoritesMap
+          : favoritesMap // ignore: cast_nullable_to_non_nullable
+              as Map<int, PhotoModel>,
       exception: null == exception
           ? _value.exception
           : exception // ignore: cast_nullable_to_non_nullable
@@ -910,9 +1182,11 @@ class _$ErrorPhotoState extends ErrorPhotoState {
   const _$ErrorPhotoState(
       {required final List<PhotoModel> elements,
       required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap,
       required this.exception})
       : _elements = elements,
         _favorites = favorites,
+        _favoritesMap = favoritesMap,
         super._();
 
   final List<PhotoModel> _elements;
@@ -931,12 +1205,20 @@ class _$ErrorPhotoState extends ErrorPhotoState {
     return EqualUnmodifiableListView(_favorites);
   }
 
+  final Map<int, PhotoModel> _favoritesMap;
+  @override
+  Map<int, PhotoModel> get favoritesMap {
+    if (_favoritesMap is EqualUnmodifiableMapView) return _favoritesMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_favoritesMap);
+  }
+
   @override
   final Exception exception;
 
   @override
   String toString() {
-    return 'PhotoState.error(elements: $elements, favorites: $favorites, exception: $exception)';
+    return 'PhotoState.error(elements: $elements, favorites: $favorites, favoritesMap: $favoritesMap, exception: $exception)';
   }
 
   @override
@@ -947,6 +1229,8 @@ class _$ErrorPhotoState extends ErrorPhotoState {
             const DeepCollectionEquality().equals(other._elements, _elements) &&
             const DeepCollectionEquality()
                 .equals(other._favorites, _favorites) &&
+            const DeepCollectionEquality()
+                .equals(other._favoritesMap, _favoritesMap) &&
             (identical(other.exception, exception) ||
                 other.exception == exception));
   }
@@ -956,6 +1240,7 @@ class _$ErrorPhotoState extends ErrorPhotoState {
       runtimeType,
       const DeepCollectionEquality().hash(_elements),
       const DeepCollectionEquality().hash(_favorites),
+      const DeepCollectionEquality().hash(_favoritesMap),
       exception);
 
   @JsonKey(ignore: true)
@@ -967,54 +1252,63 @@ class _$ErrorPhotoState extends ErrorPhotoState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
-        base,
     required TResult Function(List<PhotoModel> elements,
-            List<PhotoModel> favorites, Exception exception)
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
+        base,
+    required TResult Function(
+            List<PhotoModel> elements,
+            List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap,
+            Exception exception)
         error,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         loading,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         fetching,
   }) {
-    return error(elements, favorites, exception);
+    return error(elements, favorites, favoritesMap, exception);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
   }) {
-    return error?.call(elements, favorites, exception);
+    return error?.call(elements, favorites, favoritesMap, exception);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
     required TResult orElse(),
   }) {
     if (error != null) {
-      return error(elements, favorites, exception);
+      return error(elements, favorites, favoritesMap, exception);
     }
     return orElse();
   }
@@ -1061,6 +1355,7 @@ abstract class ErrorPhotoState extends PhotoState {
   const factory ErrorPhotoState(
       {required final List<PhotoModel> elements,
       required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap,
       required final Exception exception}) = _$ErrorPhotoState;
   const ErrorPhotoState._() : super._();
 
@@ -1068,6 +1363,8 @@ abstract class ErrorPhotoState extends PhotoState {
   List<PhotoModel> get elements;
   @override
   List<PhotoModel> get favorites;
+  @override
+  Map<int, PhotoModel> get favoritesMap;
   Exception get exception;
   @override
   @JsonKey(ignore: true)
@@ -1083,7 +1380,10 @@ abstract class _$$LoadingPhotoStateCopyWith<$Res>
       __$$LoadingPhotoStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PhotoModel> elements, List<PhotoModel> favorites});
+  $Res call(
+      {List<PhotoModel> elements,
+      List<PhotoModel> favorites,
+      Map<int, PhotoModel> favoritesMap});
 }
 
 /// @nodoc
@@ -1099,6 +1399,7 @@ class __$$LoadingPhotoStateCopyWithImpl<$Res>
   $Res call({
     Object? elements = null,
     Object? favorites = null,
+    Object? favoritesMap = null,
   }) {
     return _then(_$LoadingPhotoState(
       elements: null == elements
@@ -1109,6 +1410,10 @@ class __$$LoadingPhotoStateCopyWithImpl<$Res>
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<PhotoModel>,
+      favoritesMap: null == favoritesMap
+          ? _value._favoritesMap
+          : favoritesMap // ignore: cast_nullable_to_non_nullable
+              as Map<int, PhotoModel>,
     ));
   }
 }
@@ -1118,9 +1423,11 @@ class __$$LoadingPhotoStateCopyWithImpl<$Res>
 class _$LoadingPhotoState extends LoadingPhotoState {
   const _$LoadingPhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites})
+      required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap})
       : _elements = elements,
         _favorites = favorites,
+        _favoritesMap = favoritesMap,
         super._();
 
   final List<PhotoModel> _elements;
@@ -1139,9 +1446,17 @@ class _$LoadingPhotoState extends LoadingPhotoState {
     return EqualUnmodifiableListView(_favorites);
   }
 
+  final Map<int, PhotoModel> _favoritesMap;
+  @override
+  Map<int, PhotoModel> get favoritesMap {
+    if (_favoritesMap is EqualUnmodifiableMapView) return _favoritesMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_favoritesMap);
+  }
+
   @override
   String toString() {
-    return 'PhotoState.loading(elements: $elements, favorites: $favorites)';
+    return 'PhotoState.loading(elements: $elements, favorites: $favorites, favoritesMap: $favoritesMap)';
   }
 
   @override
@@ -1151,14 +1466,17 @@ class _$LoadingPhotoState extends LoadingPhotoState {
             other is _$LoadingPhotoState &&
             const DeepCollectionEquality().equals(other._elements, _elements) &&
             const DeepCollectionEquality()
-                .equals(other._favorites, _favorites));
+                .equals(other._favorites, _favorites) &&
+            const DeepCollectionEquality()
+                .equals(other._favoritesMap, _favoritesMap));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_elements),
-      const DeepCollectionEquality().hash(_favorites));
+      const DeepCollectionEquality().hash(_favorites),
+      const DeepCollectionEquality().hash(_favoritesMap));
 
   @JsonKey(ignore: true)
   @override
@@ -1169,54 +1487,63 @@ class _$LoadingPhotoState extends LoadingPhotoState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
-        base,
     required TResult Function(List<PhotoModel> elements,
-            List<PhotoModel> favorites, Exception exception)
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
+        base,
+    required TResult Function(
+            List<PhotoModel> elements,
+            List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap,
+            Exception exception)
         error,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         loading,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         fetching,
   }) {
-    return loading(elements, favorites);
+    return loading(elements, favorites, favoritesMap);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
   }) {
-    return loading?.call(elements, favorites);
+    return loading?.call(elements, favorites, favoritesMap);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
     required TResult orElse(),
   }) {
     if (loading != null) {
-      return loading(elements, favorites);
+      return loading(elements, favorites, favoritesMap);
     }
     return orElse();
   }
@@ -1262,13 +1589,16 @@ class _$LoadingPhotoState extends LoadingPhotoState {
 abstract class LoadingPhotoState extends PhotoState {
   const factory LoadingPhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites}) = _$LoadingPhotoState;
+      required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap}) = _$LoadingPhotoState;
   const LoadingPhotoState._() : super._();
 
   @override
   List<PhotoModel> get elements;
   @override
   List<PhotoModel> get favorites;
+  @override
+  Map<int, PhotoModel> get favoritesMap;
   @override
   @JsonKey(ignore: true)
   _$$LoadingPhotoStateCopyWith<_$LoadingPhotoState> get copyWith =>
@@ -1283,7 +1613,10 @@ abstract class _$$FetchingPhotoStateCopyWith<$Res>
       __$$FetchingPhotoStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<PhotoModel> elements, List<PhotoModel> favorites});
+  $Res call(
+      {List<PhotoModel> elements,
+      List<PhotoModel> favorites,
+      Map<int, PhotoModel> favoritesMap});
 }
 
 /// @nodoc
@@ -1299,6 +1632,7 @@ class __$$FetchingPhotoStateCopyWithImpl<$Res>
   $Res call({
     Object? elements = null,
     Object? favorites = null,
+    Object? favoritesMap = null,
   }) {
     return _then(_$FetchingPhotoState(
       elements: null == elements
@@ -1309,6 +1643,10 @@ class __$$FetchingPhotoStateCopyWithImpl<$Res>
           ? _value._favorites
           : favorites // ignore: cast_nullable_to_non_nullable
               as List<PhotoModel>,
+      favoritesMap: null == favoritesMap
+          ? _value._favoritesMap
+          : favoritesMap // ignore: cast_nullable_to_non_nullable
+              as Map<int, PhotoModel>,
     ));
   }
 }
@@ -1318,9 +1656,11 @@ class __$$FetchingPhotoStateCopyWithImpl<$Res>
 class _$FetchingPhotoState extends FetchingPhotoState {
   const _$FetchingPhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites})
+      required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap})
       : _elements = elements,
         _favorites = favorites,
+        _favoritesMap = favoritesMap,
         super._();
 
   final List<PhotoModel> _elements;
@@ -1339,9 +1679,17 @@ class _$FetchingPhotoState extends FetchingPhotoState {
     return EqualUnmodifiableListView(_favorites);
   }
 
+  final Map<int, PhotoModel> _favoritesMap;
+  @override
+  Map<int, PhotoModel> get favoritesMap {
+    if (_favoritesMap is EqualUnmodifiableMapView) return _favoritesMap;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(_favoritesMap);
+  }
+
   @override
   String toString() {
-    return 'PhotoState.fetching(elements: $elements, favorites: $favorites)';
+    return 'PhotoState.fetching(elements: $elements, favorites: $favorites, favoritesMap: $favoritesMap)';
   }
 
   @override
@@ -1351,14 +1699,17 @@ class _$FetchingPhotoState extends FetchingPhotoState {
             other is _$FetchingPhotoState &&
             const DeepCollectionEquality().equals(other._elements, _elements) &&
             const DeepCollectionEquality()
-                .equals(other._favorites, _favorites));
+                .equals(other._favorites, _favorites) &&
+            const DeepCollectionEquality()
+                .equals(other._favoritesMap, _favoritesMap));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_elements),
-      const DeepCollectionEquality().hash(_favorites));
+      const DeepCollectionEquality().hash(_favorites),
+      const DeepCollectionEquality().hash(_favoritesMap));
 
   @JsonKey(ignore: true)
   @override
@@ -1370,54 +1721,63 @@ class _$FetchingPhotoState extends FetchingPhotoState {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
-        base,
     required TResult Function(List<PhotoModel> elements,
-            List<PhotoModel> favorites, Exception exception)
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
+        base,
+    required TResult Function(
+            List<PhotoModel> elements,
+            List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap,
+            Exception exception)
         error,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         loading,
-    required TResult Function(
-            List<PhotoModel> elements, List<PhotoModel> favorites)
+    required TResult Function(List<PhotoModel> elements,
+            List<PhotoModel> favorites, Map<int, PhotoModel> favoritesMap)
         fetching,
   }) {
-    return fetching(elements, favorites);
+    return fetching(elements, favorites, favoritesMap);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult? Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
   }) {
-    return fetching?.call(elements, favorites);
+    return fetching?.call(elements, favorites, favoritesMap);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         base,
     TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
-            Exception exception)?
+            Map<int, PhotoModel> favoritesMap, Exception exception)?
         error,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         loading,
-    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites)?
+    TResult Function(List<PhotoModel> elements, List<PhotoModel> favorites,
+            Map<int, PhotoModel> favoritesMap)?
         fetching,
     required TResult orElse(),
   }) {
     if (fetching != null) {
-      return fetching(elements, favorites);
+      return fetching(elements, favorites, favoritesMap);
     }
     return orElse();
   }
@@ -1463,13 +1823,16 @@ class _$FetchingPhotoState extends FetchingPhotoState {
 abstract class FetchingPhotoState extends PhotoState {
   const factory FetchingPhotoState(
       {required final List<PhotoModel> elements,
-      required final List<PhotoModel> favorites}) = _$FetchingPhotoState;
+      required final List<PhotoModel> favorites,
+      required final Map<int, PhotoModel> favoritesMap}) = _$FetchingPhotoState;
   const FetchingPhotoState._() : super._();
 
   @override
   List<PhotoModel> get elements;
   @override
   List<PhotoModel> get favorites;
+  @override
+  Map<int, PhotoModel> get favoritesMap;
   @override
   @JsonKey(ignore: true)
   _$$FetchingPhotoStateCopyWith<_$FetchingPhotoState> get copyWith =>
