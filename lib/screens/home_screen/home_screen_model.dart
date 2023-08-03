@@ -13,8 +13,8 @@ class HomeScreenModel extends ElementaryModel {
   final _elements = EntityStateNotifier<List<PhotoModel>>();
   final _favorites = EntityStateNotifier<List<PhotoModel>>();
 
-  final _favoritesMap = <int, PhotoModel>{};
   final _elementsIndexMap = <int, int>{};
+  final _favoritesMap = <int, PhotoModel>{};
 
   bool get isFetchingState => _elements.value?.isLoading ?? false;
 
@@ -38,7 +38,7 @@ class HomeScreenModel extends ElementaryModel {
       for (int i = length; i < length + 10; i++) {
         final photo = await _photoRepository.getPhoto().then((e) => e.copyWith(
               id: i,
-              isFavorite: _favoritesMap[e.id] == null ? false : true,
+              isFavorite: _favoritesMap[i] == null ? false : true,
             ));
 
         elements.add(photo);
