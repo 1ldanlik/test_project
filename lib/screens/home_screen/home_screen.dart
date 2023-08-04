@@ -33,15 +33,14 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                 EntityStateNotifierBuilder<List<PhotoModel>>(
                   listenableEntityState: wm.elements,
                   builder: (_, elements) {
-                    if (elements == null) {
+                    if (elements == null || elements.isEmpty) {
                       return const PhotoEmptyWidget();
                     }
 
                     return RefreshIndicator(
-                      onRefresh: () async {
-                        wm.onRefreshElementsTab();
-                      },
+                      onRefresh: wm.onRefreshElementsTab,
                       child: PhotosListWidget(
+                        key: wm.pageOneKey,
                         photos: elements,
                         controller: wm.scrollController,
                         withInfinityScroll: true,
@@ -53,7 +52,23 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                   loadingBuilder: (_, __) => const LoadingIndicator(),
                   errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
                 ),
-                Container()
+                EntityStateNotifierBuilder(
+                  listenableEntityState: wm.favorites,
+                  builder: (_, favorites) {
+                    if (favorites == null || favorites.isEmpty) {
+                      return const PhotoEmptyWidget();
+                    }
+
+                    return PhotosListWidget(
+                      key: wm.pageTwoKey,
+                      photos: favorites,
+                      onPhotoCardTap: wm.onPhotoCardTap,
+                      onFavoriteButtonPressed: wm.onDeletePhotoFromLocal,
+                    );
+                  },
+                  loadingBuilder: (_, __) => const LoadingIndicator(),
+                  errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
+                ),
               ],
             ),
           ),
