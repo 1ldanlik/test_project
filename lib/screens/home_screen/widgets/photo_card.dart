@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../domain/photo_model/photo_model.dart';
+import '../../../routing/app_routes.dart';
 import '../../../theme/dimensions.dart';
 
 class PhotoCard extends StatelessWidget {
   const PhotoCard({
     Key? key,
     required this.photo,
-    required this.onPhotoCardTap,
     required this.onFavoriteButtonPressed,
   }) : super(key: key);
 
   final PhotoModel photo;
-  final VoidCallback onPhotoCardTap;
   final void Function(PhotoModel) onFavoriteButtonPressed;
 
   @override
@@ -20,7 +20,10 @@ class PhotoCard extends StatelessWidget {
     const borderRadius = 26.0;
 
     return GestureDetector(
-      onTap: onPhotoCardTap,
+      onTap: () => GoRouter.of(context).push(
+        AppRoutes.information.toPath,
+        extra: photo,
+      ),
       child: Container(
         height: 150,
         decoration: BoxDecoration(

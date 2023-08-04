@@ -42,8 +42,6 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
     model.initPhotos();
   }
 
-  void onPhotoCardTap() => {};
-
   Future<void> onRefreshElementsTab() async {
     await Future.delayed(const Duration(seconds: 3));
     return model.getPhotos();

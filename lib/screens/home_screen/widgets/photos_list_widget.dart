@@ -9,7 +9,6 @@ class PhotosListWidget extends StatelessWidget {
   const PhotosListWidget({
     Key? key,
     required this.photos,
-    required this.onPhotoCardTap,
     required this.onFavoriteButtonPressed,
     this.controller,
     this.withInfinityScroll = false,
@@ -17,7 +16,6 @@ class PhotosListWidget extends StatelessWidget {
 
   final bool withInfinityScroll;
   final List<PhotoModel> photos;
-  final VoidCallback onPhotoCardTap;
   final void Function(PhotoModel) onFavoriteButtonPressed;
   final ScrollController? controller;
 
@@ -42,7 +40,6 @@ class PhotosListWidget extends StatelessWidget {
           ),
           child: PhotoCard(
             photo: photo,
-            onPhotoCardTap: onPhotoCardTap,
             onFavoriteButtonPressed: onFavoriteButtonPressed,
           ),
         );

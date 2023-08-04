@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:test_project/screens/home_screen/home_screen.dart';
 
 import 'domain/photo_model/photo_model.dart';
+import 'routing/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if(!Hive.isAdapterRegistered(0)) {
+  if (!Hive.isAdapterRegistered(0)) {
     Hive.registerAdapter(PhotoModelAdapter());
   }
   await Hive.initFlutter();
@@ -14,8 +14,22 @@ void main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  late AppRouter _appRouter;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _appRouter = AppRouter();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +38,9 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: MaterialApp.router(
+        routerConfig: _appRouter.router,
+      ),
     );
   }
 }

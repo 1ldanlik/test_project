@@ -1,11 +1,11 @@
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
-import '../../common/loading_indicator/loading_indicator.dart';
-import 'home_screen_wm.dart';
-import 'widgets/photos_list_widget.dart';
 
+import '../../common/loading_indicator/loading_indicator.dart';
 import '../../domain/photo_model/photo_model.dart';
+import 'home_screen_wm.dart';
 import 'widgets/photo_empty_widget.dart';
+import 'widgets/photos_list_widget.dart';
 
 class HomeScreen extends ElementaryWidget<HomeScreenWM> {
   const HomeScreen({
@@ -44,7 +44,6 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                         photos: elements,
                         controller: wm.scrollController,
                         withInfinityScroll: true,
-                        onPhotoCardTap: wm.onPhotoCardTap,
                         onFavoriteButtonPressed: wm.onFavoriteButtonPressed,
                       ),
                     );
@@ -62,7 +61,6 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                     return PhotosListWidget(
                       key: wm.pageTwoKey,
                       photos: favorites,
-                      onPhotoCardTap: wm.onPhotoCardTap,
                       onFavoriteButtonPressed: wm.onDeletePhotoFromLocal,
                     );
                   },
