@@ -1,10 +1,12 @@
 import 'dart:async';
 
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 
 import '../../data/photo_repository.dart';
 import '../../domain/photo_model/photo_model.dart';
 import 'repository/favorites_repository.dart';
+import 'widgets/fetch_widget.dart';
 
 class HomeScreenModel extends ElementaryModel {
   final PhotoRepository _photoRepository;
@@ -13,10 +15,14 @@ class HomeScreenModel extends ElementaryModel {
   final _elements = EntityStateNotifier<List<PhotoModel>>();
   final _favorites = EntityStateNotifier<List<PhotoModel>>();
 
+  final _fetchState = ValueNotifier<FetchState>(FetchState.base);
+
   final _elementsIndexMap = <int, int>{};
   final _favoritesMap = <int, PhotoModel>{};
 
   bool get isFetchingState => _elements.value?.isLoading ?? false;
+
+  ValueListenable<FetchState> get fetchState => _fetchState;
 
   ListenableState<EntityState<List<PhotoModel>>> get elements => _elements;
 
@@ -27,28 +33,6 @@ class HomeScreenModel extends ElementaryModel {
     required FavoritesRepository favoritesRepository,
   })  : _photoRepository = photoRepository,
         _favoritesRepository = favoritesRepository;
-
-  Future<void> fetchPhotos() async {
-    try {
-      await Future.delayed(const Duration(seconds: 3));
-
-      final elements = _elements.value?.data?.toList() ?? [];
-      final length = elements.toList().length;
-
-      for (int i = length; i < length + 10; i++) {
-        final photo = await _photoRepository.getPhoto().then((e) => e.copyWith(
-              id: i,
-              isFavorite: _favoritesMap[i] == null ? false : true,
-            ));
-
-        elements.add(photo);
-        _elementsIndexMap.addAll({photo.id: i});
-      }
-      _elements.content(elements);
-    } on Exception catch (e) {
-      _elements.error(e, []);
-    }
-  }
 
   void getPhotosFromLocal() {
     final favorites = _favoritesRepository.getPhotos();
@@ -101,17 +85,56 @@ class HomeScreenModel extends ElementaryModel {
     getPhotosFromLocal();
   }
 
+  Future<void> fetchPhotos() async {
+    _fetchState.value = FetchState.loading;
+    await Future.delayed(const Duration(seconds: 3));
+
+    final elements = _elements.value?.data ?? [];
+    final list = elements.toList();
+    final length = list.length;
+    const fetchElementsAmount = 10;
+
+    try {
+      await Future.wait(Iterable.generate(fetchElementsAmount, (i) {
+        final index = i + length;
+        return _photoRepository.getPhoto().then<PhotoModel?>((photo) {
+          //TODO remove this "id: index" on create repository
+          photo = photo.copyWith(
+            id: index,
+            isFavorite: _favoritesMap[index] == null ? false : true,
+          );
+          list.add(photo);
+          _elementsIndexMap.addAll({photo.id: index});
+
+          return photo;
+        });
+      }));
+    } on Exception catch (_) {
+      _fetchState.value = FetchState.error;
+    }
+
+    _elements.content(list);
+    _fetchState.value = FetchState.base;
+  }
+
   Future<void> getPhotos() async {
     try {
+      final map = <int, int>{};
       final list = <PhotoModel>[];
-      for (int i = 0; i < 10; i++) {
-        final photo = await _photoRepository.getPhoto();
+      const getElementsAmount = 10;
 
-        list.add(photo.copyWith(id: i));
-      }
       _elementsIndexMap.clear();
 
-      final map = {for (int i = 0; i < list.length; i++) list[i].id: i};
+      await Future.wait(Iterable.generate(
+        getElementsAmount,
+        (index) => _photoRepository.getPhoto().then((value) {
+          //TODO remove this row on create repository
+          final photo = value.copyWith(id: index);
+
+          list.add(photo);
+          map.addAll({photo.id: index});
+        }),
+      ));
 
       _elementsIndexMap.addAll(map);
 

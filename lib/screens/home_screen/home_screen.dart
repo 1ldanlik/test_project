@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../common/loading_indicator/loading_indicator.dart';
 import '../../domain/photo_model/photo_model.dart';
 import 'home_screen_wm.dart';
+import 'widgets/fetch_widget.dart';
 import 'widgets/photo_empty_widget.dart';
 import 'widgets/photos_list_widget.dart';
 
@@ -45,6 +46,10 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                         controller: wm.scrollController,
                         withInfinityScroll: true,
                         onFavoriteButtonPressed: wm.onFavoriteButtonPressed,
+                        fetchWidget: FetchWidget(
+                          fetchState: wm.fetchState,
+                          onRetryErrorButtonTap: wm.onRetryErrorButtonTap,
+                        ),
                       ),
                     );
                   },

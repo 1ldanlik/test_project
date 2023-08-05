@@ -1,4 +1,5 @@
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/photo_repository.dart';
@@ -7,6 +8,7 @@ import '../../utils/photo_hive.dart';
 import 'home_screen.dart';
 import 'home_screen_model.dart';
 import 'repository/favorites_repository.dart';
+import 'widgets/fetch_widget.dart';
 
 HomeScreenWM createHomeScreenWM(_) {
   final photoHive = PhotoHive();
@@ -28,6 +30,8 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
   late final ScrollController scrollController;
   final pageOneKey = const PageStorageKey<String>('pageOne');
   final pageTwoKey = const PageStorageKey<String>('pageTwo');
+
+  ValueListenable<FetchState> get fetchState => model.fetchState;
 
   ListenableState<EntityState<List<PhotoModel>>> get elements => model.elements;
 
@@ -54,9 +58,12 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
   void onDeletePhotoFromLocal(PhotoModel photo) =>
       model.removePhotoFromLocal(photo);
 
+  void onRetryErrorButtonTap() => model.fetchPhotos();
+
   void _fetchPhotos() {
     if (scrollController.position.maxScrollExtent == scrollController.offset &&
-        !model.isFetchingState) {
+        !model.isFetchingState &&
+        fetchState.value == FetchState.base) {
       model.fetchPhotos();
     }
   }
