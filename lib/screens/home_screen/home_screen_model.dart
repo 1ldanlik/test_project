@@ -97,7 +97,7 @@ class HomeScreenModel extends ElementaryModel {
     try {
       await Future.wait(Iterable.generate(fetchElementsAmount, (i) {
         final index = i + length;
-        return _photoRepository.getPhoto().then<PhotoModel?>((photo) {
+        return _photoRepository.getPhoto().then((photo) {
           //TODO remove this "id: index" on create repository
           photo = photo.copyWith(
             id: index,
