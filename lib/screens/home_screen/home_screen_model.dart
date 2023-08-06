@@ -109,12 +109,12 @@ class HomeScreenModel extends ElementaryModel {
           return photo;
         });
       }));
+
+      _elements.content(list);
+      _fetchState.value = FetchState.base;
     } on Exception catch (_) {
       _fetchState.value = FetchState.error;
     }
-
-    _elements.content(list);
-    _fetchState.value = FetchState.base;
   }
 
   Future<void> getPhotos() async {
