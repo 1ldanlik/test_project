@@ -48,7 +48,7 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
 
   Future<void> onRefreshElementsTab() async {
     await Future.delayed(const Duration(seconds: 3));
-    return model.getPhotos();
+    await model.getPhotos();
   }
 
   void onFavoriteButtonPressed(PhotoModel photo) => photo.isFavorite
