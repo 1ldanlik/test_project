@@ -15,8 +15,7 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
   }) : super(wmFactory);
 
   @override
-  Widget build(HomeScreenWM wm) {
-    return MaterialApp(
+  Widget build(HomeScreenWM wm) => MaterialApp(
       home: DefaultTabController(
         length: 2,
         child: Scaffold(
@@ -78,5 +77,4 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
         ),
       ),
     );
-  }
 }

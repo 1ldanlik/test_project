@@ -20,24 +20,22 @@ class FetchWidget extends StatelessWidget {
   final ValueListenable<FetchState> fetchState;
 
   @override
-  Widget build(BuildContext context) {
-    return ValueListenableBuilder<FetchState>(
-      valueListenable: fetchState,
-      builder: (_, fetchState, __) {
-        if (fetchState == FetchState.error) {
-          return Column(
-            children: [
-              const Text('Ошибка загрузки данных'),
-              TextButton(
-                onPressed: onRetryErrorButtonTap,
-                child: const Text('Еще раз'),
-              )
-            ],
-          );
-        }
+  Widget build(BuildContext context) => ValueListenableBuilder<FetchState>(
+        valueListenable: fetchState,
+        builder: (_, fetchState, __) {
+          if (fetchState == FetchState.error) {
+            return Column(
+              children: [
+                const Text('Ошибка загрузки данных'),
+                TextButton(
+                  onPressed: onRetryErrorButtonTap,
+                  child: const Text('Еще раз'),
+                )
+              ],
+            );
+          }
 
-        return const LoadingIndicator();
-      },
-    );
-  }
+          return const LoadingIndicator();
+        },
+      );
 }
