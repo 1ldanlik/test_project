@@ -36,19 +36,13 @@ class HomeScreenModel extends ElementaryModel {
 
   void getPhotosFromLocal() {
     final favorites = _favoritesRepository.getPhotos();
-    final elements = _elements.value?.data?.toList() ?? [];
-    final map = <int, PhotoModel>{};
+
+    _favoritesMap.clear();
 
     for (var fav in favorites) {
-      final index = _elementsIndexMap[fav.id];
-      if (index != null) {
-        elements[index] = fav.copyWith(isFavorite: true);
-      }
-      map.addAll({fav.id: fav});
+      _favoritesMap.addAll({fav.id: fav});
     }
 
-    _favoritesMap.addAll(map);
-    _elements.content(elements);
     _favorites.content(favorites);
   }
 
@@ -80,9 +74,10 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> initPhotos() async {
     _elements.loading([]);
+    await Future.delayed(const Duration(seconds: 3));
     await _favoritesRepository.initDb();
-    await getPhotos();
     getPhotosFromLocal();
+    await getPhotos();
   }
 
   Future<void> fetchPhotos() async {
@@ -91,22 +86,10 @@ class HomeScreenModel extends ElementaryModel {
 
     final elements = _elements.value?.data ?? [];
     final list = elements.toList();
-    final length = list.length;
     const fetchElementsAmount = 10;
 
     try {
-      await Future.wait(Iterable.generate(fetchElementsAmount, (i) {
-        final index = i + length;
-        return _photoRepository.getPhoto().then((photo) {
-          //TODO remove this "id: index" on create repository
-          photo = photo.copyWith(
-            id: index,
-            isFavorite: _favoritesMap[index] == null ? false : true,
-          );
-          list.add(photo);
-          _elementsIndexMap.addAll({photo.id: index});
-        });
-      }));
+      await _getData(photos: list, getElementsAmount: fetchElementsAmount);
 
       _elements.content(list);
       _fetchState.value = FetchState.base;
@@ -122,21 +105,33 @@ class HomeScreenModel extends ElementaryModel {
 
       _elementsIndexMap.clear();
 
-      await Future.wait(Iterable.generate(
-        getElementsAmount,
-        (index) => _photoRepository.getPhoto().then((value) {
-          //TODO remove this row on create repository
-          final photo = value.copyWith(id: index);
-
-          list.add(photo);
-          _elementsIndexMap.addAll({photo.id: index});
-        }),
-      ));
+      await _getData(photos: list, getElementsAmount: getElementsAmount);
 
       _elements.content(list);
     } on Exception catch (e) {
       _elements.error(e, []);
     }
+  }
+
+  Future<void> _getData({
+    required int getElementsAmount,
+    required List<PhotoModel> photos,
+  }) async {
+    final length = photos.length;
+
+    await Future.wait(Iterable.generate(getElementsAmount, (i) {
+      final index = i + length;
+
+      return _photoRepository.getPhoto().then((photo) {
+        //TODO remove this "id: index" on create repository
+        photo = photo.copyWith(
+          id: index,
+          isFavorite: _favoritesMap[index] != null,
+        );
+        photos.add(photo);
+        _elementsIndexMap.addAll({photo.id: index});
+      });
+    }));
   }
 
   void _updateElements({required PhotoModel photo, required bool isFavorite}) {

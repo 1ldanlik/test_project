@@ -56,7 +56,7 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                   loadingBuilder: (_, __) => const LoadingIndicator(),
                   errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
                 ),
-                EntityStateNotifierBuilder(
+                EntityStateNotifierBuilder<List<PhotoModel>>(
                   listenableEntityState: wm.favorites,
                   builder: (_, favorites) {
                     if (favorites == null || favorites.isEmpty) {

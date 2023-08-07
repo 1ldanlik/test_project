@@ -47,6 +47,7 @@ class PhotoCard extends StatelessWidget {
                     width: imageWidth,
                     loadingBuilder: (_, child, loadingProgress) {
                       if (loadingProgress == null) return child;
+                      
                       return Center(
                         child: CircularProgressIndicator(
                           value: loadingProgress.expectedTotalBytes != null

@@ -21,7 +21,7 @@ class FetchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
+    return ValueListenableBuilder<FetchState>(
       valueListenable: fetchState,
       builder: (_, fetchState, __) {
         if (fetchState == FetchState.error) {
