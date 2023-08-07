@@ -119,7 +119,6 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> getPhotos() async {
     try {
-      final map = <int, int>{};
       final list = <PhotoModel>[];
       const getElementsAmount = 10;
 
@@ -132,11 +131,9 @@ class HomeScreenModel extends ElementaryModel {
           final photo = value.copyWith(id: index);
 
           list.add(photo);
-          map.addAll({photo.id: index});
+          _elementsIndexMap.addAll({photo.id: index});
         }),
       ));
-
-      _elementsIndexMap.addAll(map);
 
       _elements.content(list);
     } on Exception catch (e) {
