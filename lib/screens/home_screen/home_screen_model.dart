@@ -105,8 +105,6 @@ class HomeScreenModel extends ElementaryModel {
           );
           list.add(photo);
           _elementsIndexMap.addAll({photo.id: index});
-
-          return photo;
         });
       }));
 
