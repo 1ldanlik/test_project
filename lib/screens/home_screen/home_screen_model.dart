@@ -59,7 +59,9 @@ class HomeScreenModel extends ElementaryModel {
         photo: photo,
         isFavorite: isFavorite,
       );
-      _updatePickedPhotoFavoriteState(isFavorite);
+      if (photo.id == _pickedPhoto.value.id) {
+        _updatePickedPhotoFavoriteState(isFavorite);
+      }
     } on Exception catch (e) {
       _favorites.error(e, []);
     }
@@ -75,7 +77,9 @@ class HomeScreenModel extends ElementaryModel {
         photo: photo,
         isFavorite: isFavorite,
       );
-      _updatePickedPhotoFavoriteState(isFavorite);
+      if (photo.id == _pickedPhoto.value.id) {
+        _updatePickedPhotoFavoriteState(isFavorite);
+      }
     } on Exception catch (e) {
       _favorites.error(e, []);
     }
@@ -159,7 +163,7 @@ class HomeScreenModel extends ElementaryModel {
   }
 
   void _updatePickedPhotoFavoriteState(bool isFavorite) {
-    if(_pickedPhoto.value.isEmpty) return;
+    if (_pickedPhoto.value.isEmpty) return;
 
     _pickedPhoto.value = _pickedPhoto.value.copyWith(isFavorite: isFavorite);
   }
