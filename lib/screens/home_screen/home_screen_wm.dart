@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/photo_repository.dart';
 import '../../domain/photo_model/photo_model.dart';
+import '../../routing/service/app_router.dart';
 import '../../utils/photo_hive.dart';
 import 'home_screen.dart';
 import 'home_screen_model.dart';
@@ -55,8 +57,14 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
       ? model.removePhotoFromLocal(photo)
       : model.setPhotoToLocal(photo);
 
-  void onDeletePhotoFromLocal(PhotoModel photo) =>
-      model.removePhotoFromLocal(photo);
+  void onPhotoCardTap(PhotoModel photo) {
+    model.pickPhoto(photo);
+
+    AutoRouter.of(context).push(InformationRoute(
+      photo: model.pickedPhoto,
+      onFavoriteButtonTap: onFavoriteButtonPressed,
+    ));
+  }
 
   void onRetryErrorButtonTap() => model.fetchPhotos();
 

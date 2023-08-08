@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:test_project/routing/service/app_router.dart';
 
 import 'domain/photo_model/photo_model.dart';
-import 'routing/app_router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,7 +22,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late AppRouter _appRouter;
+  late final AppRouter _appRouter;
 
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
       ),
       home: MaterialApp.router(
-        routerConfig: _appRouter.router,
+        routerConfig: _appRouter.config(),
       ),
     );
   }

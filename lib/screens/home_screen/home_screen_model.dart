@@ -16,6 +16,7 @@ class HomeScreenModel extends ElementaryModel {
   final _favorites = EntityStateNotifier<List<PhotoModel>>();
 
   final _fetchState = ValueNotifier<FetchState>(FetchState.base);
+  final _pickedPhoto = ValueNotifier<PhotoModel>(PhotoModel.empty());
 
   final _elementsIndexMap = <int, int>{};
   final _favoritesMap = <int, PhotoModel>{};
@@ -23,6 +24,8 @@ class HomeScreenModel extends ElementaryModel {
   bool get isFetchingState => _elements.value?.isLoading ?? false;
 
   ValueListenable<FetchState> get fetchState => _fetchState;
+
+  ValueListenable<PhotoModel> get pickedPhoto => _pickedPhoto;
 
   ListenableState<EntityState<List<PhotoModel>>> get elements => _elements;
 
@@ -49,12 +52,14 @@ class HomeScreenModel extends ElementaryModel {
   Future<void> setPhotoToLocal(PhotoModel photo) async {
     try {
       final element = photo.copyWith(isFavorite: true);
+      const isFavorite = true;
 
       await _favoritesRepository.setPhoto(element);
       _updateElements(
         photo: photo,
-        isFavorite: true,
+        isFavorite: isFavorite,
       );
+      _updatePickedPhotoFavoriteState(isFavorite);
     } on Exception catch (e) {
       _favorites.error(e, []);
     }
@@ -63,10 +68,14 @@ class HomeScreenModel extends ElementaryModel {
   Future<void> removePhotoFromLocal(PhotoModel photo) async {
     try {
       await _favoritesRepository.removePhoto(photo);
+
+      const isFavorite = false;
+
       _updateElements(
         photo: photo,
-        isFavorite: false,
+        isFavorite: isFavorite,
       );
+      _updatePickedPhotoFavoriteState(isFavorite);
     } on Exception catch (e) {
       _favorites.error(e, []);
     }
@@ -148,6 +157,14 @@ class HomeScreenModel extends ElementaryModel {
     _elements.content(elements);
     _favorites.content(favorites);
   }
+
+  void _updatePickedPhotoFavoriteState(bool isFavorite) {
+    if(_pickedPhoto.value.isEmpty) return;
+
+    _pickedPhoto.value = _pickedPhoto.value.copyWith(isFavorite: isFavorite);
+  }
+
+  void pickPhoto(PhotoModel photo) => _pickedPhoto.value = photo;
 
   @override
   void dispose() {
