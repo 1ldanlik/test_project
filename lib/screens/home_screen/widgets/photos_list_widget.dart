@@ -12,14 +12,16 @@ class PhotosListWidget extends StatelessWidget {
     required this.onPhotoCardTap,
     required this.onFavoriteButtonPressed,
     this.controller,
+    this.fetchWidget,
     this.withInfinityScroll = false,
   }) : super(key: key);
 
+  final Widget? fetchWidget;
   final bool withInfinityScroll;
   final List<PhotoModel> photos;
-  final VoidCallback onPhotoCardTap;
-  final void Function(PhotoModel) onFavoriteButtonPressed;
   final ScrollController? controller;
+  final void Function(PhotoModel) onPhotoCardTap;
+  final void Function(PhotoModel) onFavoriteButtonPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,9 @@ class PhotosListWidget extends StatelessWidget {
       itemCount: withInfinityScroll ? photos.length + 1 : photos.length,
       itemBuilder: (_, index) {
         if (withInfinityScroll && index == photos.length) {
-          return const Padding(
-            padding: EdgeInsets.symmetric(vertical: Dimensions.small),
-            child: LoadingIndicator(),
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: Dimensions.small),
+            child: fetchWidget ?? const LoadingIndicator(),
           );
         }
 

@@ -1,79 +1,86 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
+
 import '../../common/loading_indicator/loading_indicator.dart';
+import '../../domain/photo_model/photo_model.dart';
 import 'home_screen_wm.dart';
+import 'widgets/fetch_widget.dart';
+import 'widgets/photo_empty_widget.dart';
 import 'widgets/photos_list_widget.dart';
 
-import '../../domain/photo_model/photo_model.dart';
-import 'widgets/photo_empty_widget.dart';
-
+@RoutePage()
 class HomeScreen extends ElementaryWidget<HomeScreenWM> {
+  static const String path = '/home';
+
   const HomeScreen({
     super.key,
     WidgetModelFactory wmFactory = createHomeScreenWM,
   }) : super(wmFactory);
 
   @override
-  Widget build(HomeScreenWM wm) {
-    return MaterialApp(
-      home: DefaultTabController(
-        length: 2,
-        child: Scaffold(
-          appBar: AppBar(
-            bottom: const TabBar(
-              tabs: [
-                Tab(text: 'Список'),
-                Tab(text: 'Избранное'),
-              ],
+  Widget build(HomeScreenWM wm) => MaterialApp(
+        home: DefaultTabController(
+          length: 2,
+          child: Scaffold(
+            appBar: AppBar(
+              bottom: const TabBar(
+                tabs: [
+                  Tab(text: 'Список'),
+                  Tab(text: 'Избранное'),
+                ],
+              ),
             ),
-          ),
-          body: Center(
-            child: TabBarView(
-              children: [
-                EntityStateNotifierBuilder<List<PhotoModel>>(
-                  listenableEntityState: wm.elements,
-                  builder: (_, elements) {
-                    if (elements == null || elements.isEmpty) {
-                      return const PhotoEmptyWidget();
-                    }
+            body: Center(
+              child: TabBarView(
+                children: [
+                  EntityStateNotifierBuilder<List<PhotoModel>>(
+                    listenableEntityState: wm.elements,
+                    builder: (_, elements) {
+                      if (elements == null || elements.isEmpty) {
+                        return const PhotoEmptyWidget();
+                      }
 
-                    return RefreshIndicator(
-                      onRefresh: wm.onRefreshElementsTab,
-                      child: PhotosListWidget(
-                        key: wm.pageOneKey,
-                        photos: elements,
-                        controller: wm.scrollController,
-                        withInfinityScroll: true,
+                      return RefreshIndicator(
+                        onRefresh: wm.onRefreshElementsTab,
+                        child: PhotosListWidget(
+                          key: wm.pageOneKey,
+                          photos: elements,
+                          controller: wm.scrollController,
+                          withInfinityScroll: true,
+                          onPhotoCardTap: wm.onPhotoCardTap,
+                          onFavoriteButtonPressed: wm.onFavoriteButtonPressed,
+                          fetchWidget: FetchWidget(
+                            fetchState: wm.fetchState,
+                            onRetryErrorButtonTap: wm.onRetryErrorButtonTap,
+                          ),
+                        ),
+                      );
+                    },
+                    loadingBuilder: (_, __) => const LoadingIndicator(),
+                    errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
+                  ),
+                  EntityStateNotifierBuilder<List<PhotoModel>>(
+                    listenableEntityState: wm.favorites,
+                    builder: (_, favorites) {
+                      if (favorites == null || favorites.isEmpty) {
+                        return const PhotoEmptyWidget();
+                      }
+
+                      return PhotosListWidget(
+                        key: wm.pageTwoKey,
+                        photos: favorites,
                         onPhotoCardTap: wm.onPhotoCardTap,
                         onFavoriteButtonPressed: wm.onFavoriteButtonPressed,
-                      ),
-                    );
-                  },
-                  loadingBuilder: (_, __) => const LoadingIndicator(),
-                  errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
-                ),
-                EntityStateNotifierBuilder(
-                  listenableEntityState: wm.favorites,
-                  builder: (_, favorites) {
-                    if (favorites == null || favorites.isEmpty) {
-                      return const PhotoEmptyWidget();
-                    }
-
-                    return PhotosListWidget(
-                      key: wm.pageTwoKey,
-                      photos: favorites,
-                      onPhotoCardTap: wm.onPhotoCardTap,
-                      onFavoriteButtonPressed: wm.onDeletePhotoFromLocal,
-                    );
-                  },
-                  loadingBuilder: (_, __) => const LoadingIndicator(),
-                  errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
-                ),
-              ],
+                      );
+                    },
+                    loadingBuilder: (_, __) => const LoadingIndicator(),
+                    errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }

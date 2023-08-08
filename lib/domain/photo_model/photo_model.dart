@@ -50,6 +50,19 @@ class PhotoModel {
         isFavorite: isFavorite ?? this.isFavorite,
       );
 
+  factory PhotoModel.empty() =>
+      PhotoModel(id: -1, albumId: -1, url: '', thumbnailUrl: '', title: '');
+
+  bool get isEmpty {
+    if (id == -1 &&
+        albumId == -1 &&
+        url.isEmpty &&
+        thumbnailUrl.isEmpty &&
+        title.isEmpty) return true;
+
+    return false;
+  }
+
   factory PhotoModel.fromJson(Map<String, dynamic> json) =>
       _$PhotoModelFromJson(json);
 

@@ -1,12 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import '../../data/photo_repository.dart';
 import '../../domain/photo_model/photo_model.dart';
+import '../../routing/service/app_router.dart';
 import '../../utils/photo_hive.dart';
 import 'home_screen.dart';
 import 'home_screen_model.dart';
 import 'repository/favorites_repository.dart';
+import 'widgets/fetch_widget.dart';
 
 HomeScreenWM createHomeScreenWM(_) {
   final photoHive = PhotoHive();
@@ -29,6 +33,8 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
   final pageOneKey = const PageStorageKey<String>('pageOne');
   final pageTwoKey = const PageStorageKey<String>('pageTwo');
 
+  ValueListenable<FetchState> get fetchState => model.fetchState;
+
   ListenableState<EntityState<List<PhotoModel>>> get elements => model.elements;
 
   ListenableState<EntityState<List<PhotoModel>>> get favorites =>
@@ -42,23 +48,30 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
     model.initPhotos();
   }
 
-  void onPhotoCardTap() => {};
-
   Future<void> onRefreshElementsTab() async {
     await Future.delayed(const Duration(seconds: 3));
-    return model.getPhotos();
+    await model.getPhotos();
   }
 
   void onFavoriteButtonPressed(PhotoModel photo) => photo.isFavorite
       ? model.removePhotoFromLocal(photo)
       : model.setPhotoToLocal(photo);
 
-  void onDeletePhotoFromLocal(PhotoModel photo) =>
-      model.removePhotoFromLocal(photo);
+  void onPhotoCardTap(PhotoModel photo) {
+    model.pickPhoto(photo);
+
+    AutoRouter.of(context).push(InformationRoute(
+      photo: model.pickedPhoto,
+      onFavoriteButtonTap: onFavoriteButtonPressed,
+    ));
+  }
+
+  void onRetryErrorButtonTap() => model.fetchPhotos();
 
   void _fetchPhotos() {
     if (scrollController.position.maxScrollExtent == scrollController.offset &&
-        !model.isFetchingState) {
+        !model.isFetchingState &&
+        fetchState.value == FetchState.base) {
       model.fetchPhotos();
     }
   }
