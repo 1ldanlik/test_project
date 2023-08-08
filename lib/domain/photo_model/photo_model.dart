@@ -54,10 +54,8 @@ class PhotoModel {
       PhotoModel(id: -1, albumId: -1, url: '', thumbnailUrl: '', title: '');
 
   bool get isEmpty {
-    final empty = PhotoModel.empty();
-
-    if (id == empty.id &&
-        albumId == empty.albumId &&
+    if (id == -1 &&
+        albumId == -1 &&
         url.isEmpty &&
         thumbnailUrl.isEmpty &&
         title.isEmpty) return true;
