@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 
+import '../../common/data_error_widget/data_error_widget.dart';
 import '../../common/loading_indicator/loading_indicator.dart';
 import '../../domain/photo_model/photo.dart';
 import 'home_screen_wm.dart';
@@ -52,13 +53,15 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                           onFavoriteButtonPressed: wm.onFavoriteButtonPressed,
                           fetchWidget: FetchWidget(
                             fetchState: wm.fetchState,
-                            onRetryErrorButtonTap: wm.onRetryErrorButtonTap,
+                            onRetryErrorButtonTap: wm.onRetryFetchElements,
                           ),
                         ),
                       );
                     },
                     loadingBuilder: (_, __) => const LoadingIndicator(),
-                    errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
+                    errorBuilder: (_, __, ___) => DataErrorWidget(
+                      onRetryErrorButtonTap: wm.onRetryGetElements,
+                    ),
                   ),
                   EntityStateNotifierBuilder<List<Photo>>(
                     listenableEntityState: wm.favorites,
@@ -75,7 +78,9 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                       );
                     },
                     loadingBuilder: (_, __) => const LoadingIndicator(),
-                    errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
+                    errorBuilder: (_, __, ___) => DataErrorWidget(
+                      onRetryErrorButtonTap: wm.onRetryGetFavorites,
+                    ),
                   ),
                 ],
               ),
