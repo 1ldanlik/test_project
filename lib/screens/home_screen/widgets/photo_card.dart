@@ -68,7 +68,7 @@ class PhotoCard extends StatelessWidget {
                 ),
                 SizedBox(
                   width: maxWidth * 0.38,
-                  child: Text('${photo.id} ' + photo.title),
+                  child: Text('${photo.id} ${photo.title}'),
                 ),
                 IconButton(
                   onPressed: () => onFavoriteButtonPressed(photo),

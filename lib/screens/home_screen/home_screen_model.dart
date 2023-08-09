@@ -16,7 +16,7 @@ class HomeScreenModel extends ElementaryModel {
   final _favorites = EntityStateNotifier<List<Photo>>();
 
   final _fetchState = ValueNotifier<FetchState>(FetchState.base);
-  final _pickedPhoto = ValueNotifier<Photo>(Photo.empty());
+  final _pickedPhoto = ValueNotifier<Photo>(const Photo.empty());
 
   final _elementsIndexMap = <int, int>{};
   final _favoritesMap = <int, Photo>{};
