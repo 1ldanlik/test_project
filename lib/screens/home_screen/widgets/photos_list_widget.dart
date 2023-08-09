@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../common/loading_indicator/loading_indicator.dart';
-import '../../../domain/photo_model/photo_model.dart';
+import '../../../domain/photo_model/photo.dart';
 import '../../../theme/dimensions.dart';
 import 'photo_card.dart';
 
@@ -18,10 +18,10 @@ class PhotosListWidget extends StatelessWidget {
 
   final Widget? fetchWidget;
   final bool withInfinityScroll;
-  final List<PhotoModel> photos;
+  final List<Photo> photos;
   final ScrollController? controller;
-  final void Function(PhotoModel) onPhotoCardTap;
-  final void Function(PhotoModel) onFavoriteButtonPressed;
+  final void Function(Photo) onPhotoCardTap;
+  final void Function(Photo) onFavoriteButtonPressed;
 
   @override
   Widget build(BuildContext context) {

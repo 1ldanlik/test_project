@@ -1,11 +1,11 @@
 import 'package:hive/hive.dart';
 import 'package:json_annotation/json_annotation.dart';
 
-part 'photo_model.g.dart';
+part 'photo.g.dart';
 
 @HiveType(typeId: 0)
 @JsonSerializable()
-class PhotoModel {
+class Photo {
   @HiveField(0)
   final int id;
 
@@ -24,7 +24,7 @@ class PhotoModel {
   @HiveField(5)
   final bool isFavorite;
 
-  PhotoModel({
+  Photo({
     required this.id,
     required this.albumId,
     required this.url,
@@ -33,7 +33,7 @@ class PhotoModel {
     this.isFavorite = false,
   });
 
-  PhotoModel copyWith({
+  Photo copyWith({
     int? id,
     int? albumId,
     String? title,
@@ -41,7 +41,7 @@ class PhotoModel {
     String? thumbnailUrl,
     bool? isFavorite,
   }) =>
-      PhotoModel(
+      Photo(
         id: id ?? this.id,
         url: url ?? this.url,
         title: title ?? this.title,
@@ -50,8 +50,13 @@ class PhotoModel {
         isFavorite: isFavorite ?? this.isFavorite,
       );
 
-  factory PhotoModel.empty() =>
-      PhotoModel(id: -1, albumId: -1, url: '', thumbnailUrl: '', title: '');
+  const Photo.empty()
+      : id = -1,
+        albumId = -1,
+        url = '',
+        thumbnailUrl = '',
+        title = '',
+        isFavorite = false;
 
   bool get isEmpty {
     if (id == -1 &&
@@ -63,8 +68,7 @@ class PhotoModel {
     return false;
   }
 
-  factory PhotoModel.fromJson(Map<String, dynamic> json) =>
-      _$PhotoModelFromJson(json);
+  factory Photo.fromJson(Map<String, dynamic> json) => _$PhotoFromJson(json);
 
-  Map<String, dynamic> toJson() => _$PhotoModelToJson(this);
+  Map<String, dynamic> toJson() => _$PhotoToJson(this);
 }

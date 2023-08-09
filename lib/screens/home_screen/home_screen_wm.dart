@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:test_project/core/service/dio/dio_service.dart';
 
 import '../../data/photo_repository.dart';
-import '../../domain/photo_model/photo_model.dart';
+import '../../domain/photo_model/photo.dart';
 import '../../routing/service/app_router.dart';
 import '../../utils/photo_hive.dart';
 import 'home_screen.dart';
@@ -37,9 +37,9 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
 
   ValueListenable<FetchState> get fetchState => model.fetchState;
 
-  ListenableState<EntityState<List<PhotoModel>>> get elements => model.elements;
+  ListenableState<EntityState<List<Photo>>> get elements => model.elements;
 
-  ListenableState<EntityState<List<PhotoModel>>> get favorites =>
+  ListenableState<EntityState<List<Photo>>> get favorites =>
       model.favorites;
 
   @override
@@ -52,11 +52,11 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
 
   Future<void> onRefreshElementsTab() => model.getPhotos();
 
-  void onFavoriteButtonPressed(PhotoModel photo) => photo.isFavorite
+  void onFavoriteButtonPressed(Photo photo) => photo.isFavorite
       ? model.removePhotoFromLocal(photo)
       : model.setPhotoToLocal(photo);
 
-  void onPhotoCardTap(PhotoModel photo) {
+  void onPhotoCardTap(Photo photo) {
     model.pickPhoto(photo);
 
     AutoRouter.of(context).push(InformationRoute(

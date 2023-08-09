@@ -19,13 +19,13 @@ class _FavoriteApi implements FavoriteApi {
   String? baseUrl;
 
   @override
-  Future<PhotoModel> getPhoto(id) async {
+  Future<Photo> getPhoto(id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<PhotoModel>(Options(
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Photo>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -37,7 +37,7 @@ class _FavoriteApi implements FavoriteApi {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = PhotoModel.fromJson(_result.data!);
+    final value = Photo.fromJson(_result.data!);
     return value;
   }
 

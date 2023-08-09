@@ -1,5 +1,5 @@
-import 'photo_model/photo_model.dart';
+import 'photo_model/photo.dart';
 
 abstract interface class PhotoInterface {
-  Future<PhotoModel> getPhoto(String id);
+  Future<Photo> getPhoto(String id);
 }
