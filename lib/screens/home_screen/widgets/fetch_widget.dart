@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
+import '../../../common/data_error_widget/data_error_widget.dart';
 import '../../../common/loading_indicator/loading_indicator.dart';
 
 enum FetchState {
@@ -24,14 +25,8 @@ class FetchWidget extends StatelessWidget {
         valueListenable: fetchState,
         builder: (_, fetchState, __) {
           if (fetchState == FetchState.error) {
-            return Column(
-              children: [
-                const Text('Ошибка загрузки данных'),
-                TextButton(
-                  onPressed: onRetryErrorButtonTap,
-                  child: const Text('Еще раз'),
-                )
-              ],
+            return DataErrorWidget(
+              onRetryErrorButtonTap: onRetryErrorButtonTap,
             );
           }
 

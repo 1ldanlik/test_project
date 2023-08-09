@@ -109,6 +109,11 @@ class HomeScreenModel extends ElementaryModel {
     }
   }
 
+  Future<void> retryGetPhotos() async {
+    _elements.loading([]);
+    await getPhotos();
+  }
+
   Future<void> getPhotos() async {
     try {
       final list = <Photo>[];

@@ -65,7 +65,11 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
     ));
   }
 
-  void onRetryErrorButtonTap() => model.fetchPhotos();
+  Future<void> onRetryFetchElements() => model.fetchPhotos();
+
+  Future<void> onRetryGetElements() => model.retryGetPhotos();
+
+  void onRetryGetFavorites() => model.getPhotosFromLocal();
 
   void _fetchPhotos() {
     if (scrollController.position.maxScrollExtent == scrollController.offset &&
