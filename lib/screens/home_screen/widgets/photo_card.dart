@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../domain/photo_model/photo_model.dart';
+import '../../../domain/photo_model/photo.dart';
 import '../../../theme/dimensions.dart';
 
 class PhotoCard extends StatelessWidget {
@@ -11,9 +11,9 @@ class PhotoCard extends StatelessWidget {
     required this.onFavoriteButtonPressed,
   }) : super(key: key);
 
-  final PhotoModel photo;
-  final void Function(PhotoModel) onPhotoCardTap;
-  final void Function(PhotoModel) onFavoriteButtonPressed;
+  final Photo photo;
+  final void Function(Photo) onPhotoCardTap;
+  final void Function(Photo) onFavoriteButtonPressed;
 
   @override
   Widget build(BuildContext context) {

@@ -1,22 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'photo_model.dart';
+part of 'photo.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
+class PhotoAdapter extends TypeAdapter<Photo> {
   @override
   final int typeId = 0;
 
   @override
-  PhotoModel read(BinaryReader reader) {
+  Photo read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return PhotoModel(
+    return Photo(
       id: fields[0] as int,
       albumId: fields[1] as int,
       url: fields[3] as String,
@@ -27,7 +27,7 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
   }
 
   @override
-  void write(BinaryWriter writer, PhotoModel obj) {
+  void write(BinaryWriter writer, Photo obj) {
     writer
       ..writeByte(6)
       ..writeByte(0)
@@ -50,7 +50,7 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is PhotoModelAdapter &&
+      other is PhotoAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
@@ -59,7 +59,7 @@ class PhotoModelAdapter extends TypeAdapter<PhotoModel> {
 // JsonSerializableGenerator
 // **************************************************************************
 
-PhotoModel _$PhotoModelFromJson(Map<String, dynamic> json) => PhotoModel(
+Photo _$PhotoFromJson(Map<String, dynamic> json) => Photo(
       id: json['id'] as int,
       albumId: json['albumId'] as int,
       url: json['url'] as String,
@@ -68,8 +68,7 @@ PhotoModel _$PhotoModelFromJson(Map<String, dynamic> json) => PhotoModel(
       isFavorite: json['isFavorite'] as bool? ?? false,
     );
 
-Map<String, dynamic> _$PhotoModelToJson(PhotoModel instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$PhotoToJson(Photo instance) => <String, dynamic>{
       'id': instance.id,
       'albumId': instance.albumId,
       'title': instance.title,

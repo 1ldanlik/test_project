@@ -85,8 +85,8 @@ class HomeRouteArgs {
 class InformationRoute extends PageRouteInfo<InformationRouteArgs> {
   InformationRoute({
     Key? key,
-    required ValueListenable<PhotoModel> photo,
-    required void Function(PhotoModel) onFavoriteButtonTap,
+    required ValueListenable<Photo> photo,
+    required void Function(Photo) onFavoriteButtonTap,
     List<PageRouteInfo>? children,
   }) : super(
           InformationRoute.name,
@@ -113,9 +113,9 @@ class InformationRouteArgs {
 
   final Key? key;
 
-  final ValueListenable<PhotoModel> photo;
+  final ValueListenable<Photo> photo;
 
-  final void Function(PhotoModel) onFavoriteButtonTap;
+  final void Function(Photo) onFavoriteButtonTap;
 
   @override
   String toString() {

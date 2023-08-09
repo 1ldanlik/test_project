@@ -1,4 +1,4 @@
-import '../../../domain/photo_model/photo_model.dart';
+import '../../../domain/photo_model/photo.dart';
 import '../../../utils/photo_hive.dart';
 
 class FavoritesRepository {
@@ -8,11 +8,11 @@ class FavoritesRepository {
 
   Future<void> initDb() => _photoHive.init();
 
-  Future<void> setPhoto(PhotoModel photo) => _photoHive.setPhoto(photo);
+  Future<void> setPhoto(Photo photo) => _photoHive.setPhoto(photo);
 
-  List<PhotoModel> getPhotos() => _photoHive.getPhotos();
+  List<Photo> getPhotos() => _photoHive.getPhotos();
 
-  Future<void> removePhoto(PhotoModel photo) => _photoHive.removePhoto(photo.id);
+  Future<void> removePhoto(Photo photo) => _photoHive.removePhoto(photo.id);
 
   Future<void> closeDb() => _photoHive.close();
 }

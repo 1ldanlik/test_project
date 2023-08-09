@@ -2,9 +2,10 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:test_project/core/service/dio/dio_service.dart';
 
 import '../../data/photo_repository.dart';
-import '../../domain/photo_model/photo_model.dart';
+import '../../domain/photo_model/photo.dart';
 import '../../routing/service/app_router.dart';
 import '../../utils/photo_hive.dart';
 import 'home_screen.dart';
@@ -13,9 +14,10 @@ import 'repository/favorites_repository.dart';
 import 'widgets/fetch_widget.dart';
 
 HomeScreenWM createHomeScreenWM(_) {
+  final dio = DioService.createClient();
+  final photoRepository = PhotoRepository(dio);
   final photoHive = PhotoHive();
   final favoritesRepository = FavoritesRepository(photoHive);
-  final photoRepository = PhotoRepository();
 
   return HomeScreenWM(
     HomeScreenModel(
@@ -35,9 +37,9 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
 
   ValueListenable<FetchState> get fetchState => model.fetchState;
 
-  ListenableState<EntityState<List<PhotoModel>>> get elements => model.elements;
+  ListenableState<EntityState<List<Photo>>> get elements => model.elements;
 
-  ListenableState<EntityState<List<PhotoModel>>> get favorites =>
+  ListenableState<EntityState<List<Photo>>> get favorites =>
       model.favorites;
 
   @override
@@ -48,16 +50,13 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
     model.initPhotos();
   }
 
-  Future<void> onRefreshElementsTab() async {
-    await Future.delayed(const Duration(seconds: 3));
-    await model.getPhotos();
-  }
+  Future<void> onRefreshElementsTab() => model.getPhotos();
 
-  void onFavoriteButtonPressed(PhotoModel photo) => photo.isFavorite
+  void onFavoriteButtonPressed(Photo photo) => photo.isFavorite
       ? model.removePhotoFromLocal(photo)
       : model.setPhotoToLocal(photo);
 
-  void onPhotoCardTap(PhotoModel photo) {
+  void onPhotoCardTap(Photo photo) {
     model.pickPhoto(photo);
 
     AutoRouter.of(context).push(InformationRoute(

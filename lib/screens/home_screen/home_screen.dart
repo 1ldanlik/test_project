@@ -3,7 +3,7 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/material.dart';
 
 import '../../common/loading_indicator/loading_indicator.dart';
-import '../../domain/photo_model/photo_model.dart';
+import '../../domain/photo_model/photo.dart';
 import 'home_screen_wm.dart';
 import 'widgets/fetch_widget.dart';
 import 'widgets/photo_empty_widget.dart';
@@ -34,7 +34,7 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
             body: Center(
               child: TabBarView(
                 children: [
-                  EntityStateNotifierBuilder<List<PhotoModel>>(
+                  EntityStateNotifierBuilder<List<Photo>>(
                     listenableEntityState: wm.elements,
                     builder: (_, elements) {
                       if (elements == null || elements.isEmpty) {
@@ -60,7 +60,7 @@ class HomeScreen extends ElementaryWidget<HomeScreenWM> {
                     loadingBuilder: (_, __) => const LoadingIndicator(),
                     errorBuilder: (_, __, ___) => const PhotoEmptyWidget(),
                   ),
-                  EntityStateNotifierBuilder<List<PhotoModel>>(
+                  EntityStateNotifierBuilder<List<Photo>>(
                     listenableEntityState: wm.favorites,
                     builder: (_, favorites) {
                       if (favorites == null || favorites.isEmpty) {

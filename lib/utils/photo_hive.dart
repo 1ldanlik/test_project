@@ -1,24 +1,24 @@
 import 'package:hive/hive.dart';
-import 'package:test_project/domain/photo_model/photo_model.dart';
+import 'package:test_project/domain/photo_model/photo.dart';
 
 class HiveKeys {
   static const FAVORITE_KEY = 'favorite_key';
 }
 
 class PhotoHive {
-  late final Box<PhotoModel> box;
+  late final Box<Photo> box;
 
   PhotoHive();
 
   Future<void> init() async {
-    box = await Hive.openBox<PhotoModel>(HiveKeys.FAVORITE_KEY);
+    box = await Hive.openBox<Photo>(HiveKeys.FAVORITE_KEY);
   }
 
-  Future<void> setPhoto(PhotoModel photo) => box.put(photo.id, photo);
+  Future<void> setPhoto(Photo photo) => box.put(photo.id, photo);
 
   Future<void> removePhoto(int id) => box.delete(id);
 
-  List<PhotoModel> getPhotos() {
+  List<Photo> getPhotos() {
     final list = box.values.toList();
     return list;
   }

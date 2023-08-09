@@ -4,7 +4,7 @@ import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 
 import '../../data/photo_repository.dart';
-import '../../domain/photo_model/photo_model.dart';
+import '../../domain/photo_model/photo.dart';
 import 'repository/favorites_repository.dart';
 import 'widgets/fetch_widget.dart';
 
@@ -12,24 +12,24 @@ class HomeScreenModel extends ElementaryModel {
   final PhotoRepository _photoRepository;
   final FavoritesRepository _favoritesRepository;
 
-  final _elements = EntityStateNotifier<List<PhotoModel>>();
-  final _favorites = EntityStateNotifier<List<PhotoModel>>();
+  final _elements = EntityStateNotifier<List<Photo>>();
+  final _favorites = EntityStateNotifier<List<Photo>>();
 
   final _fetchState = ValueNotifier<FetchState>(FetchState.base);
-  final _pickedPhoto = ValueNotifier<PhotoModel>(PhotoModel.empty());
+  final _pickedPhoto = ValueNotifier<Photo>(Photo.empty());
 
   final _elementsIndexMap = <int, int>{};
-  final _favoritesMap = <int, PhotoModel>{};
+  final _favoritesMap = <int, Photo>{};
 
   bool get isFetchingState => _elements.value?.isLoading ?? false;
 
   ValueListenable<FetchState> get fetchState => _fetchState;
 
-  ValueListenable<PhotoModel> get pickedPhoto => _pickedPhoto;
+  ValueListenable<Photo> get pickedPhoto => _pickedPhoto;
 
-  ListenableState<EntityState<List<PhotoModel>>> get elements => _elements;
+  ListenableState<EntityState<List<Photo>>> get elements => _elements;
 
-  ListenableState<EntityState<List<PhotoModel>>> get favorites => _favorites;
+  ListenableState<EntityState<List<Photo>>> get favorites => _favorites;
 
   HomeScreenModel({
     required PhotoRepository photoRepository,
@@ -49,7 +49,7 @@ class HomeScreenModel extends ElementaryModel {
     _favorites.content(favorites);
   }
 
-  Future<void> setPhotoToLocal(PhotoModel photo) async {
+  Future<void> setPhotoToLocal(Photo photo) async {
     try {
       final element = photo.copyWith(isFavorite: true);
       const isFavorite = true;
@@ -67,7 +67,7 @@ class HomeScreenModel extends ElementaryModel {
     }
   }
 
-  Future<void> removePhotoFromLocal(PhotoModel photo) async {
+  Future<void> removePhotoFromLocal(Photo photo) async {
     try {
       await _favoritesRepository.removePhoto(photo);
 
@@ -87,7 +87,6 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> initPhotos() async {
     _elements.loading([]);
-    await Future.delayed(const Duration(seconds: 3));
     await _favoritesRepository.initDb();
     getPhotosFromLocal();
     await getPhotos();
@@ -95,7 +94,6 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> fetchPhotos() async {
     _fetchState.value = FetchState.loading;
-    await Future.delayed(const Duration(seconds: 3));
 
     final elements = _elements.value?.data ?? [];
     final list = elements.toList();
@@ -113,7 +111,7 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> getPhotos() async {
     try {
-      final list = <PhotoModel>[];
+      final list = <Photo>[];
       const getElementsAmount = 10;
 
       _elementsIndexMap.clear();
@@ -128,26 +126,26 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> _getData({
     required int getElementsAmount,
-    required List<PhotoModel> photos,
+    required List<Photo> photos,
   }) async {
     final length = photos.length;
 
-    await Future.wait(Iterable.generate(getElementsAmount, (i) {
+    final list =
+        await Future.wait<Photo>(Iterable.generate(getElementsAmount, (i) {
       final index = i + length;
+      final photoIndex = index + 1;
 
-      return _photoRepository.getPhoto().then((photo) {
-        //TODO remove this "id: index" on create repository
-        photo = photo.copyWith(
-          id: index,
-          isFavorite: _favoritesMap[index] != null,
-        );
-        photos.add(photo);
+      return _photoRepository.getPhoto('$photoIndex').then((photo) {
+        photo = photo.copyWith(isFavorite: _favoritesMap[photoIndex] != null);
+
         _elementsIndexMap.addAll({photo.id: index});
+        return photo;
       });
     }));
+    photos.addAll(list);
   }
 
-  void _updateElements({required PhotoModel photo, required bool isFavorite}) {
+  void _updateElements({required Photo photo, required bool isFavorite}) {
     final favorites = _favoritesRepository.getPhotos();
     final map = {for (var favorite in favorites) favorite.id: favorite};
     final index = _elementsIndexMap[photo.id];
@@ -157,7 +155,9 @@ class HomeScreenModel extends ElementaryModel {
       elements[index] = photo.copyWith(isFavorite: isFavorite);
     }
 
-    _favoritesMap.addAll(map);
+    _favoritesMap
+      ..clear()
+      ..addAll(map);
     _elements.content(elements);
     _favorites.content(favorites);
   }
@@ -168,7 +168,7 @@ class HomeScreenModel extends ElementaryModel {
     _pickedPhoto.value = _pickedPhoto.value.copyWith(isFavorite: isFavorite);
   }
 
-  void pickPhoto(PhotoModel photo) => _pickedPhoto.value = photo;
+  void pickPhoto(Photo photo) => _pickedPhoto.value = photo;
 
   @override
   void dispose() {

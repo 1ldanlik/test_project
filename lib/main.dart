@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:test_project/routing/service/app_router.dart';
 
-import 'domain/photo_model/photo_model.dart';
+import 'domain/photo_model/photo.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   if (!Hive.isAdapterRegistered(0)) {
-    Hive.registerAdapter(PhotoModelAdapter());
+    Hive.registerAdapter(PhotoAdapter());
   }
   await Hive.initFlutter();
 

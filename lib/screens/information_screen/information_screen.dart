@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import '../../domain/photo_model/photo_model.dart';
+import '../../domain/photo_model/photo.dart';
 import '../../theme/dimensions.dart';
 
 @RoutePage()
@@ -15,8 +15,8 @@ class InformationScreen extends StatelessWidget {
     required this.onFavoriteButtonTap,
   }) : super(key: key);
 
-  final ValueListenable<PhotoModel> photo;
-  final void Function(PhotoModel) onFavoriteButtonTap;
+  final ValueListenable<Photo> photo;
+  final void Function(Photo) onFavoriteButtonTap;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class InformationScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () => onFavoriteButtonTap(photo.value),
-              icon: ValueListenableBuilder<PhotoModel>(
+              icon: ValueListenableBuilder<Photo>(
                 valueListenable: photo,
                 builder: (_, photo, __) {
                   return Icon(
