@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:elementary/elementary.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:test_project/core/service/dio/dio_service.dart';
 
 import '../../data/photo_repository.dart';
 import '../../domain/photo_model/photo_model.dart';
@@ -13,9 +14,10 @@ import 'repository/favorites_repository.dart';
 import 'widgets/fetch_widget.dart';
 
 HomeScreenWM createHomeScreenWM(_) {
+  final dio = DioService.createClient();
+  final photoRepository = PhotoRepository(dio);
   final photoHive = PhotoHive();
   final favoritesRepository = FavoritesRepository(photoHive);
-  final photoRepository = PhotoRepository();
 
   return HomeScreenWM(
     HomeScreenModel(
@@ -48,10 +50,7 @@ class HomeScreenWM extends WidgetModel<HomeScreen, HomeScreenModel> {
     model.initPhotos();
   }
 
-  Future<void> onRefreshElementsTab() async {
-    await Future.delayed(const Duration(seconds: 3));
-    await model.getPhotos();
-  }
+  Future<void> onRefreshElementsTab() => model.getPhotos();
 
   void onFavoriteButtonPressed(PhotoModel photo) => photo.isFavorite
       ? model.removePhotoFromLocal(photo)

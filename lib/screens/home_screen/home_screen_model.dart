@@ -87,7 +87,6 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> initPhotos() async {
     _elements.loading([]);
-    await Future.delayed(const Duration(seconds: 3));
     await _favoritesRepository.initDb();
     getPhotosFromLocal();
     await getPhotos();
@@ -95,7 +94,6 @@ class HomeScreenModel extends ElementaryModel {
 
   Future<void> fetchPhotos() async {
     _fetchState.value = FetchState.loading;
-    await Future.delayed(const Duration(seconds: 3));
 
     final elements = _elements.value?.data ?? [];
     final list = elements.toList();
@@ -132,19 +130,19 @@ class HomeScreenModel extends ElementaryModel {
   }) async {
     final length = photos.length;
 
-    await Future.wait(Iterable.generate(getElementsAmount, (i) {
+    final list =
+        await Future.wait<PhotoModel>(Iterable.generate(getElementsAmount, (i) {
       final index = i + length;
+      final photoIndex = index + 1;
 
-      return _photoRepository.getPhoto().then((photo) {
-        //TODO remove this "id: index" on create repository
-        photo = photo.copyWith(
-          id: index,
-          isFavorite: _favoritesMap[index] != null,
-        );
-        photos.add(photo);
+      return _photoRepository.getPhoto('$photoIndex').then((photo) {
+        photo = photo.copyWith(isFavorite: _favoritesMap[photoIndex] != null);
+
         _elementsIndexMap.addAll({photo.id: index});
+        return photo;
       });
     }));
+    photos.addAll(list);
   }
 
   void _updateElements({required PhotoModel photo, required bool isFavorite}) {
@@ -157,7 +155,9 @@ class HomeScreenModel extends ElementaryModel {
       elements[index] = photo.copyWith(isFavorite: isFavorite);
     }
 
-    _favoritesMap.addAll(map);
+    _favoritesMap
+      ..clear()
+      ..addAll(map);
     _elements.content(elements);
     _favorites.content(favorites);
   }
